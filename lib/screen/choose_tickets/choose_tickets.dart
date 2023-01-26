@@ -54,7 +54,7 @@ Widget checkoutSection(BuildContext context) {
         Expanded(
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: kPrimaryColor,
+              backgroundColor: kPrimaryColor,
               side: BorderSide.none,
             ),
             onPressed: () {},

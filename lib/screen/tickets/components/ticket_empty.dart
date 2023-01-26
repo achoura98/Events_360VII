@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../constants.dart';
+import '../../../constants.dart';
 
 class TicketEmpty extends StatelessWidget {
   const TicketEmpty({Key? key}) : super(key: key);
@@ -10,22 +9,6 @@ class TicketEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Billets",
-          style: TextStyle(
-              color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 25),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            LineAwesomeIcons.angle_left,
-            color: kPrimaryColor,
-          ),
-        ),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

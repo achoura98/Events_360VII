@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import '../../../models/event/event.dart';
 
-class ReservationHeader extends StatelessWidget {
-  const ReservationHeader({
+class PayementHeader extends StatelessWidget {
+  const PayementHeader({
     Key? key,
     required this.event,
   }) : super(key: key);

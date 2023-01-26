@@ -12,18 +12,13 @@ class ProfilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kPrimaryColor,
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            LineAwesomeIcons.angle_left,
-            color: kPrimaryColor,
-          ),
-        ),
+        automaticallyImplyLeading: false,
         title: Text(
           "Profil",
           style: TextStyle(
-              color: kPrimaryColor, fontSize: 25, fontWeight: FontWeight.bold),
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -86,7 +81,8 @@ class ProfilScreen extends StatelessWidget {
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20)),
-                      style: ElevatedButton.styleFrom(primary: kPrimaryColor),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: kPrimaryColor),
                     ),
                   ),
                   SizedBox(height: getProportionateScreenHeight(30)),

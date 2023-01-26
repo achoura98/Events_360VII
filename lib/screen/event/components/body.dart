@@ -287,7 +287,7 @@ class Body extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
                   style: ElevatedButton.styleFrom(
-                    primary: kPrimaryColor,
+                    backgroundColor: kPrimaryColor,
                     side: BorderSide.none,
                   ),
                 ),

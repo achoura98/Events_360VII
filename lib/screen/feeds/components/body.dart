@@ -14,6 +14,7 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  // ignore: non_constant_identifier_names
   List<EventModel> display_list = List.from(weekEvents);
 
   void updateList(String value) {
@@ -38,18 +39,18 @@ class _BodyState extends State<Body> {
           TextField(
             onChanged: ((value) => updateList(value)),
             decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white54,
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15.0),
-                  borderSide: BorderSide(width: 2.0, color: kSecondaryColor)),
-              hintText: "eg: Culture Nordique",
-              hintStyle: TextStyle(color: kPrimaryColor),
-              suffixIcon: Icon(
-                Icons.search,
-                color: kPrimaryColor,
-              ),
-            ),
+                filled: true,
+                fillColor: Colors.white54,
+                focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                    borderSide: BorderSide(width: 2.0, color: kSecondaryColor)),
+                hintText: "eg: Culture Nordique",
+                hintStyle: TextStyle(color: kPrimaryColor),
+                suffixIcon: Icon(
+                  Icons.search,
+                  color: kPrimaryColor,
+                ),
+                suffixIconColor: kPrimaryColor),
           ),
           SizedBox(height: getProportionateScreenHeight(20.0)),
           Expanded(

@@ -1,8 +1,7 @@
-// ignore_for_file: deprecated_member_use, duplicate_ignore
-
-import 'package:event_360/constants.dart';
+import 'package:event_360/screen/nav%20bar/nav_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+
+import '../../constants.dart';
 
 class WishlistEmpty extends StatelessWidget {
   const WishlistEmpty({Key? key}) : super(key: key);
@@ -10,53 +9,52 @@ class WishlistEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Liste de souhait",
-          style: TextStyle(
-              color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 25),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: Icon(
-            LineAwesomeIcons.angle_left,
-            color: kPrimaryColor,
-          ),
-        ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                    "Vous n'avez aucun évènement avec la mention j'aime",
-                    style: TextStyle(
-                        fontSize: 23,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Text(
-                      "Mettez la mention J'aime à un évènement et retrouvez-le plus tard, recevez des notifications avant votre épuisement et aidez-nous à ameliorer les propositions pour vous",
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 50),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                      width: 200,
+                      height: 200,
+                      child: Image.asset(
+                        "assets/image/empty_icon/empty-box.png",
+                        fit: BoxFit.fill,
+                      )),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(
+                      "Vous n'avez aucun évènement avec la mention j'aime. Trouver un évènement qui vous convient",
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontSize: 22,
-                          color: Colors.black54,
-                          fontWeight: FontWeight.bold)),
-                ),
-                SizedBox(height: 30),
-              ],
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: (() =>
+                        Navigator.pushNamed(context, BubbleNavBar.routeName)),
+                    child: Text("Trouver mon évènement".toUpperCase(),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: kPrimaryColor,
+                      side: BorderSide.none,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

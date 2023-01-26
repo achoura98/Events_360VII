@@ -10,7 +10,7 @@ import '../../screen/home/components/new_components/custom_like_icon.dart';
 class EventCard extends StatelessWidget {
   const EventCard({
     Key? key,
-    this.width = 300,
+    required this.width,
     required this.event,
   }) : super(key: key);
   final double width;
@@ -22,7 +22,9 @@ class EventCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20), color: Colors.white),
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            border: Border.all(width: 3, color: kPrimaryColor)),
         width: width,
         //height: 300,
         child: Column(

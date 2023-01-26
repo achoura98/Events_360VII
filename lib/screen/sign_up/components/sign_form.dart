@@ -58,7 +58,7 @@ class _SignUpFormState extends State<SignUpForm> {
                       fontWeight: FontWeight.bold,
                       fontSize: 20)),
               style: ElevatedButton.styleFrom(
-                  primary: kPrimaryColor,
+                  backgroundColor: kPrimaryColor,
                   side: BorderSide.none,
                   shape: StadiumBorder()),
             ),

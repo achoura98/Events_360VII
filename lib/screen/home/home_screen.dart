@@ -1,11 +1,13 @@
 import 'package:badges/badges.dart';
 import 'package:event_360/constants.dart';
+import 'package:event_360/screen/home/components/new_components/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../models/cart/event_card.dart';
 import '../../models/event/data.dart';
 import '../cart/cart_screen.dart';
+import '../feeds/feeds.dart';
 import 'components/new_components/event_header.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -71,152 +73,187 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.grey[200],
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Text("Acceuil",
-              style: TextStyle(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25)),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Center(
-                    child: IconButton(
-                      onPressed: () {},
-                      splashRadius: 20,
-                      icon: Badge(
-                          badgeContent: Text(
-                            "0",
-                            style: TextStyle(color: Colors.white),
+        body: NestedScrollView(
+          floatHeaderSlivers: true,
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                backgroundColor: kPrimaryColor,
+                floating: true,
+                snap: true,
+                title: Text("Acceuil",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25)),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Center(
+                          child: IconButton(
+                            onPressed: () {},
+                            splashRadius: 20,
+                            icon: Badge(
+                                badgeColor: Colors.white,
+                                badgeContent: Text(
+                                  "0",
+                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                                animationDuration: Duration(milliseconds: 300),
+                                child: Icon(
+                                  LineAwesomeIcons.bell,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
                           ),
-                          animationDuration: Duration(milliseconds: 300),
-                          child: Icon(
-                            LineAwesomeIcons.bell,
-                            size: 30,
-                            color: kPrimaryColor,
-                          )),
-                    ),
-                  ),
-                  Center(
-                    child: IconButton(
-                      splashRadius: 20,
-                      onPressed: () {
-                        Navigator.pushNamed(
-                          context,
-                          CartScreen.routeName,
-                        );
-                      },
-                      icon: Badge(
-                          badgeContent: Text(
-                            "0",
-                            style: TextStyle(color: Colors.white),
+                        ),
+                        Center(
+                          child: IconButton(
+                            splashRadius: 20,
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                context,
+                                CartScreen.routeName,
+                              );
+                            },
+                            icon: Badge(
+                                badgeColor: Colors.white,
+                                badgeContent: Text(
+                                  "0",
+                                  style: TextStyle(color: kPrimaryColor),
+                                ),
+                                animationDuration: Duration(milliseconds: 300),
+                                child: Icon(
+                                  LineAwesomeIcons.shopping_cart,
+                                  size: 30,
+                                  color: Colors.white,
+                                )),
                           ),
-                          animationDuration: Duration(milliseconds: 300),
-                          child: Icon(
-                            LineAwesomeIcons.shopping_cart,
-                            size: 30,
-                            color: kPrimaryColor,
-                          )),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
-        ),
-        body: ListView(
-          children: [
-            Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.map_marker,
-                            color: kPrimaryColor,
-                            size: 20,
-                          ),
-                          Text(
-                            "Lomé",
-                            style: TextStyle(
-                                color: kPrimaryColor,
-                                fontSize: 18,
-                                decoration: TextDecoration.underline,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+            ];
+          },
+          body: ListView(
+            children: [
+              Container(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              LineAwesomeIcons.map_marker,
+                              color: kPrimaryColor,
+                              size: 20,
+                            ),
+                            Text(
+                              "Lomé",
+                              style: TextStyle(
+                                  color: kPrimaryColor,
+                                  fontSize: 18,
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Searchfield(),
+                    SizedBox(height: 10),
+                    Container(
+                      height: 50,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: buildCategoriesWidgets(),
+                        ),
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 10),
-                  Container(
-                    height: 50,
-                    child: SingleChildScrollView(
+                    ),
+                    SizedBox(height: 10),
+                    EventHeaderWidget(
+                      text: "Choisis pour vous",
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FeedScreen())),
+                    ),
+                    SizedBox(height: 10),
+                    SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: buildCategoriesWidgets(),
+                        children: [
+                          ...List.generate(
+                              weekEvents.length,
+                              (index) => EventCard(
+                                    event: weekEvents[index],
+                                    width: 300,
+                                  ))
+                        ],
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  EventHeaderWidget(
-                    text: "Choisis pour vous",
-                  ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ...List.generate(weekEvents.length,
-                            (index) => EventCard(event: weekEvents[index]))
-                      ],
+                    SizedBox(height: 10),
+                    EventHeaderWidget(
+                      text: "Évènement populaire",
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FeedScreen())),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  EventHeaderWidget(
-                    text: "Évènement populaire",
-                  ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ...List.generate(weekEvents.length,
-                            (index) => EventCard(event: popularEvents[index]))
-                      ],
+                    SizedBox(height: 10),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          ...List.generate(
+                              weekEvents.length,
+                              (index) => EventCard(
+                                    event: popularEvents[index],
+                                    width: 300,
+                                  ))
+                        ],
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                  EventHeaderWidget(
-                    text: "Évènement à venir",
-                  ),
-                  SizedBox(height: 10),
-                  SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: [
-                        ...List.generate(
-                            weekEvents.length,
-                            (index) =>
-                                EventCard(event: upcomingHomeEvents[index]))
-                      ],
+                    SizedBox(height: 10),
+                    EventHeaderWidget(
+                      text: "Évènement à venir",
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FeedScreen())),
                     ),
-                  ),
-                ],
-              ),
-            )
-          ],
+                    SizedBox(height: 10),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          ...List.generate(
+                              weekEvents.length,
+                              (index) => EventCard(
+                                    event: upcomingHomeEvents[index],
+                                    width: 300,
+                                  ))
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -1,21 +1,21 @@
-import 'package:event_360/screen/reservation/components/body.dart';
+import 'package:event_360/screen/payment/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../constants.dart';
 import '../../models/event/event.dart';
 
-class ReservationScreen extends StatelessWidget {
-  static String routeName = "/reservation";
+class PayementScreen extends StatelessWidget {
+  static String routeName = "/payement";
 
-  ReservationScreen({
+  PayementScreen({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final ReservationArguments args =
-        ModalRoute.of(context)!.settings.arguments as ReservationArguments;
+    final PayementArguments args =
+        ModalRoute.of(context)!.settings.arguments as PayementArguments;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -26,7 +26,7 @@ class ReservationScreen extends StatelessWidget {
               color: kPrimaryColor,
             )),
         title: Text(
-          "Réservation",
+          "Option de payement",
           style: TextStyle(
               fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.bold),
         ),
@@ -38,8 +38,8 @@ class ReservationScreen extends StatelessWidget {
   }
 }
 
-class ReservationArguments {
+class PayementArguments {
   final EventModel? event;
 
-  ReservationArguments({required this.event});
+  PayementArguments({required this.event});
 }

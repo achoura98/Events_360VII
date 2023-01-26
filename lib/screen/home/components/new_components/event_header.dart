@@ -6,8 +6,10 @@ class EventHeaderWidget extends StatelessWidget {
   const EventHeaderWidget({
     Key? key,
     required this.text,
+    required this.onPressed,
   }) : super(key: key);
   final String text;
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +24,7 @@ class EventHeaderWidget extends StatelessWidget {
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           TextButton(
-              onPressed: () {},
+              onPressed: onPressed,
               child: Text(
                 'Voir tout',
                 style: TextStyle(

@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../search/search.dart';
+// import '../feeds/feeds.dart';
 import '../tickets/ticket_screen.dart';
 
 class BubbleNavBar extends StatefulWidget {
@@ -23,7 +23,7 @@ class _BubbleNavBarState extends State<BubbleNavBar> {
 
   final screens = [
     HomeScreen(),
-    SearchScreen(),
+    // FeedScreen(),
     WishlistScreen(),
     TicketScreen(),
     ProfilScreen()
@@ -32,7 +32,7 @@ class _BubbleNavBarState extends State<BubbleNavBar> {
   Widget build(BuildContext context) {
     final items = <Widget>[
       Icon(LineAwesomeIcons.home, size: 25),
-      Icon(LineAwesomeIcons.search, size: 25),
+      // Icon(Icons.rss_feed_sharp, size: 25),
       Icon(Icons.favorite, size: 25),
       Icon(CupertinoIcons.tickets),
       Icon(Icons.person, size: 25),
@@ -40,6 +40,7 @@ class _BubbleNavBarState extends State<BubbleNavBar> {
     return SafeArea(
       top: false,
       child: Scaffold(
+          backgroundColor: Colors.white,
           body: screens[currentIndex],
           extendBody: true,
           bottomNavigationBar: Theme(

@@ -1,6 +1,6 @@
 import 'package:event_360/constants.dart';
 import 'package:event_360/screen/choose_tickets/components/ticket_count.dart';
-import 'package:event_360/screen/reservation/reservation.dart';
+import 'package:event_360/screen/payment/reservation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/event/event.dart';
@@ -52,7 +52,7 @@ class _BodyState extends State<Body> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
+                      color: kPrimaryColor,
                       boxShadow: [
                         BoxShadow(
                             color: Colors.black,
@@ -70,107 +70,116 @@ class _BodyState extends State<Body> {
                         ),
                       ]),
                   child: Padding(
-                    padding: const EdgeInsets.all(13.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 10),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
+                        Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Column(
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
                                   'Quantité',
                                   style: TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
                                 SizedBox(height: 8),
-                                Text(
-                                  '2',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  '2',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
                                 Text(
                                   'Description',
                                   style: TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Prix Habituel',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  'Prix premium',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
                                 Text(
                                   'Tarifs',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  widget.event!.regularPrice.toString(),
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
-                                ),
-                                SizedBox(height: 8),
-                                Text(
-                                  widget.event!.premiumPrice == null
-                                      ? " "
-                                      : widget.event!.premiumPrice!.toString(),
-                                  style: TextStyle(
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20),
                                 ),
                               ],
                             ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  '       2      ',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  'Prix Habituel',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                                Text(
+                                  widget.event!.regularPrice.toString(),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20),
+                                ),
+                              ],
+                            ),
+                            widget.event!.premiumPrice == null
+                                ? Container()
+                                : Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        '       2        ',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        'Prix premium',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                      SizedBox(height: 8),
+                                      Text(
+                                        widget.event!.premiumPrice!.toString(),
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                            Divider(
+                              color: Colors.white,
+                            ),
                           ],
                         ),
-                        SizedBox(height: 8),
-                        Divider(
-                          color: Colors.black,
-                          height: 3,
-                        ),
-                        SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text("Total",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20)),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20)),
                             Text("10000",
                                 style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 20))
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20))
                           ],
                         )
                       ],
@@ -186,33 +195,23 @@ class _BodyState extends State<Body> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Text(
-                    "Réserver votre tickets",
-                    style: TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
-                  Divider(color: kPrimaryColor),
+                  // Text(
+                  //   "Réserver votre tickets",
+                  //   style: TextStyle(
+                  //       color: kPrimaryColor,
+                  //       fontWeight: FontWeight.bold,
+                  //       fontSize: 20),
+                  // ),
+                  // Divider(color: kPrimaryColor),
                   Container(
                     width: double.infinity,
                     height: 60,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, ReservationScreen.routeName,
-                            arguments:
-                                ReservationArguments(event: widget.event));
+                    child: CustomElevatedButton(
+                      text: "Passer à la caisse".toUpperCase(),
+                      onClick: () {
+                        Navigator.pushNamed(context, PayementScreen.routeName,
+                            arguments: PayementArguments(event: widget.event));
                       },
-                      child: Text("Passer à la caisse".toUpperCase(),
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20)),
-                      style: ElevatedButton.styleFrom(
-                        primary: kPrimaryColor.withOpacity(0.6),
-                        side: BorderSide.none,
-                      ),
                     ),
                   ),
                 ],
@@ -220,6 +219,30 @@ class _BodyState extends State<Body> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CustomElevatedButton extends StatelessWidget {
+  const CustomElevatedButton({
+    Key? key,
+    required this.text,
+    required this.onClick,
+  }) : super(key: key);
+
+  final String text;
+  final VoidCallback onClick;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onClick,
+      child: Text(text,
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: kPrimaryColor,
+        side: BorderSide.none,
       ),
     );
   }
