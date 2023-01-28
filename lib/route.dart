@@ -5,8 +5,9 @@ import 'package:event_360/screen/event/event_detail.dart';
 import 'package:event_360/screen/favoris/wishlist.dart';
 import 'package:event_360/screen/home/home_screen.dart';
 import 'package:event_360/screen/nav%20bar/nav_bar.dart';
+import 'package:event_360/screen/onboarding-screen/onboarding_screen.dart';
 import 'package:event_360/screen/opt%20screen/verification_otp.dart';
-import 'package:event_360/screen/payment/reservation.dart';
+import 'package:event_360/screen/payment/payement.dart';
 import 'package:event_360/screen/profil/components/update_profil.dart';
 import 'package:event_360/screen/profil/profil.dart';
 import 'package:event_360/screen/sign_up/sign_up_screen.dart';
@@ -31,5 +32,6 @@ final Map<String, WidgetBuilder> routes = {
   TicketsDetails.routeName: (context) => TicketsDetails(),
   ChooseTicketScreen.routeName: (context) => ChooseTicketScreen(),
   PayementScreen.routeName: (context) => PayementScreen(),
-  CartScreen.routeName: (context) => CartScreen()
+  CartScreen.routeName: (context) => CartScreen(),
+  OnboardingScreen.routeName: (context) => OnboardingScreen(),
 };

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'constants.dart';
+import '../../constant/colors.dart';
 
 ThemeData theme() {
   return ThemeData(
@@ -16,7 +16,7 @@ ThemeData theme() {
 InputDecorationTheme inputDecorationTheme() {
   OutlineInputBorder outlineInputBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(28),
-    borderSide: BorderSide(color: kTextColor),
+    borderSide: BorderSide(color: kPrimaryTextColor),
     gapPadding: 10,
   );
   return InputDecorationTheme(
@@ -33,8 +33,8 @@ InputDecorationTheme inputDecorationTheme() {
 
 TextTheme textTheme() {
   return TextTheme(
-    bodyText1: TextStyle(color: kTextColor),
-    bodyText2: TextStyle(color: kTextColor),
+    bodyText1: TextStyle(color: kPrimaryTextColor),
+    bodyText2: TextStyle(color: kPrimaryTextColor),
   );
 }
 

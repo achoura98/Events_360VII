@@ -1,7 +1,8 @@
 import 'package:event_360/screen/profil/components/body.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 
 class UpdateProfilScreen extends StatelessWidget {
   static String routeName = "/updateprofil";
@@ -11,6 +12,7 @@ class UpdateProfilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kBackgroungColors,
           leading: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: Icon(
@@ -19,7 +21,7 @@ class UpdateProfilScreen extends StatelessWidget {
               )),
           title: Text(
             "Modifier Profil",
-            style: TextStyle(
+            style: GoogleFonts.poppins(
                 color: kPrimaryColor,
                 fontSize: 25,
                 fontWeight: FontWeight.bold),

@@ -12,7 +12,7 @@ class EventModel {
       autorImage;
   final int regularPrice;
   final int? premiumPrice;
-  Map? category;
+  final String categoryName;
   final int id;
   final bool isFavorite, isPopular;
 
@@ -22,7 +22,7 @@ class EventModel {
     this.premiumPrice,
     required this.day,
     required this.id,
-    this.category,
+    required this.categoryName,
     required this.title,
     required this.about,
     required this.date,

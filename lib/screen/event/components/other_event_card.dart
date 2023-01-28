@@ -1,9 +1,9 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
 import '../../../models/event/event.dart';
-import '../../../size_config.dart';
+import '../../constant/colors.dart';
+import '../../constant/size_config.dart';
 import '../event_detail.dart';
 
 class OtherEventCard extends StatelessWidget {

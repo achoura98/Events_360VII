@@ -1,10 +1,11 @@
 import 'dart:async';
 
-import 'package:event_360/screen/sign_up/sign_up_screen.dart';
+import 'package:event_360/screen/onboarding-screen/onboarding_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:event_360/constants.dart';
-import 'package:event_360/size_config.dart';
+import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../constant/colors.dart';
 
 class Body extends StatefulWidget {
   @override
@@ -17,7 +18,7 @@ class _BodyState extends State<Body> {
     super.initState();
 
     Timer(Duration(seconds: 6),
-        () => Navigator.pushNamed(context, SignUpScreen.routeName));
+        () => Navigator.pushNamed(context, OnboardingScreen.routeName));
   }
 
   @override
@@ -38,7 +39,6 @@ class _BodyState extends State<Body> {
                     Text(
                       "EVENTS_360",
                       style: TextStyle(
-                        // on doit appeller la fonction sizeconfig dans splash_screen
                         fontSize: getProportionateScreenWidth(30),
                         color: kPrimaryColor,
                         fontWeight: FontWeight.bold,
@@ -49,7 +49,7 @@ class _BodyState extends State<Body> {
                       height: 60.0,
                     ),
                     Image.asset(
-                      "assets/image/splash.png",
+                      "assets/image/event_image/splash.png",
                       height: getProportionateScreenHeight(280),
                       width: getProportionateScreenWidth(250),
                     ),

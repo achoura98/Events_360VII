@@ -1,6 +1,7 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../screen/constant/colors.dart';
 
 class ShareButtonWidget extends StatefulWidget {
   const ShareButtonWidget({Key? key}) : super(key: key);

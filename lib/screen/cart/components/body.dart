@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../constant/colors.dart';
+import '../../constant/size_config.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

@@ -1,8 +1,9 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../../models/event/event.dart';
+import '../../constant/colors.dart';
 
 class PastTicketCard extends StatelessWidget {
   const PastTicketCard({Key? key, required this.event}) : super(key: key);
@@ -49,8 +50,8 @@ class PastTicketCard extends StatelessWidget {
                           event.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 15,
+                          style: GoogleFonts.poppins(
+                            fontSize: 12,
                             color: Colors.black87,
                             fontWeight: FontWeight.bold,
                           ),
@@ -68,8 +69,8 @@ class PastTicketCard extends StatelessWidget {
                               event.date,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
-                              style: const TextStyle(
-                                fontSize: 14,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -87,8 +88,8 @@ class PastTicketCard extends StatelessWidget {
                             const SizedBox(width: 10),
                             Text(
                               event.location,
-                              style: const TextStyle(
-                                fontSize: 14,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -108,8 +109,8 @@ class PastTicketCard extends StatelessWidget {
                               event.regularPrice == 0
                                   ? "Gratuit"
                                   : event.regularPrice.toString() + " fcfa",
-                              style: const TextStyle(
-                                fontSize: 14,
+                              style: GoogleFonts.poppins(
+                                fontSize: 12,
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -120,7 +121,7 @@ class PastTicketCard extends StatelessWidget {
                             onPressed: () {},
                             child: Text(
                               "Afficher billets",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   color: kPrimaryColor,
                                   fontWeight: FontWeight.bold),
                             ))

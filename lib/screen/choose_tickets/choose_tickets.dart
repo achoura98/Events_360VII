@@ -1,9 +1,10 @@
-import 'package:event_360/constants.dart';
 import 'package:event_360/screen/choose_tickets/components/body.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../models/event/event.dart';
+import '../constant/colors.dart';
 
 class ChooseTicketScreen extends StatelessWidget {
   static String routeName = "/chooseTicket";
@@ -23,11 +24,9 @@ class ChooseTicketScreen extends StatelessWidget {
               LineAwesomeIcons.times,
               color: kPrimaryColor,
             )),
-        title: Text(
-          "Choisis tes tickets",
-          style: TextStyle(
-              fontSize: 20, color: kPrimaryColor, fontWeight: FontWeight.bold),
-        ),
+        title: Text("Details tickets",
+            style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold, color: kPrimaryColor)),
       ),
       body: Body(
         event: args.event,
@@ -62,7 +61,7 @@ Widget checkoutSection(BuildContext context) {
               padding: EdgeInsets.all(8.0),
               child: Text(
                 "Caisse",
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 20),

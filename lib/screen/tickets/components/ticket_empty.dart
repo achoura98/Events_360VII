@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 
 class TicketEmpty extends StatelessWidget {
   const TicketEmpty({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class TicketEmpty extends StatelessWidget {
             padding: const EdgeInsets.all(32.0),
             child: Text(
               "Vous n'avez aucun tickets dans votre panier. Trouvez un évènement qui vous convient.",
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Colors.black54,
                   fontSize: 22,
                   fontWeight: FontWeight.bold),

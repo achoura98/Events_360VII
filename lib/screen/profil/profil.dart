@@ -1,8 +1,9 @@
-import 'package:event_360/constants.dart';
-import 'package:event_360/size_config.dart';
+import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import '../constant/colors.dart';
 import 'components/profil_menu.dart';
 import 'components/update_profil.dart';
 
@@ -12,13 +13,13 @@ class ProfilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: kBackgroungColors,
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
           "Profil",
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+          style: GoogleFonts.poppins(
+              color: kPrimaryColor, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       body: SingleChildScrollView(
@@ -62,13 +63,17 @@ class ProfilScreen extends StatelessWidget {
                   SizedBox(height: getProportionateScreenHeight(10)),
                   Text(
                     "Tiger Wood",
-                    style: Theme.of(context).textTheme.headline4?.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.black),
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 30),
                   ),
                   Text(
                     "Tiger.wood@icloud.com",
-                    style: Theme.of(context).textTheme.headline6?.copyWith(
-                        fontWeight: FontWeight.bold, color: Colors.black),
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 20),
                   ),
                   SizedBox(height: getProportionateScreenHeight(20)),
                   SizedBox(
@@ -77,7 +82,7 @@ class ProfilScreen extends StatelessWidget {
                       onPressed: () => Navigator.pushNamed(
                           context, UpdateProfilScreen.routeName),
                       child: Text("Modifer Profil",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                               fontSize: 20)),

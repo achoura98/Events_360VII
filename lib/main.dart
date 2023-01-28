@@ -1,6 +1,6 @@
 import 'package:event_360/route.dart';
 import 'package:event_360/screen/splash/splash_screen.dart';
-import 'package:event_360/theme.dart';
+import 'package:event_360/screen/constant/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {

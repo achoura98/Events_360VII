@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 import '../../../models/event/event.dart';
 
 class PayementHeader extends StatelessWidget {

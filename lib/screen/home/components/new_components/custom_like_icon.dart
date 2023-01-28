@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 
-import '../../../../constants.dart';
+import '../../../constant/colors.dart';
 
 class CustomLikeButton extends StatefulWidget {
   const CustomLikeButton({

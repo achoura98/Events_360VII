@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 import '../../../models/event/event.dart';
 
 class BillingCard extends StatelessWidget {
@@ -20,7 +20,8 @@ class BillingCard extends StatelessWidget {
         height: height,
         width: double.infinity,
         decoration: BoxDecoration(
-            color: kPrimaryColor, borderRadius: BorderRadius.circular(10)),
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(colors: [kPrimaryColor, Colors.orange])),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(

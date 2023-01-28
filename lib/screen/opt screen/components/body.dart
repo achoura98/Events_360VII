@@ -1,8 +1,9 @@
-import 'package:event_360/constants.dart';
-import 'package:event_360/size_config.dart';
+import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 
+import '../../constant/colors.dart';
 import '../../sign_up_success/sigu_up_success_screen.dart';
 
 class Body extends StatelessWidget {
@@ -18,14 +19,14 @@ class Body extends StatelessWidget {
             children: [
               SizedBox(height: getProportionateScreenHeight(50)),
               Text("OTP",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                       fontSize: 50,
                       fontWeight: FontWeight.bold,
                       color: kPrimaryColor)),
               Text(
                 "Consulter votre messagerie pour valider le code",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
               ),
               SizedBox(height: getProportionateScreenHeight(50)),
               Pinput(
@@ -37,7 +38,7 @@ class Body extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     "Renvoyer le code",
-                    style: TextStyle(color: kPrimaryColor),
+                    style: GoogleFonts.poppins(color: kPrimaryColor),
                   ),
                 ),
               ),
@@ -53,7 +54,7 @@ class Body extends StatelessWidget {
                         builder: (c) => SignUpSuccessScreen()));
                   },
                   child: Text("Vérifier".toUpperCase(),
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
@@ -80,7 +81,7 @@ class Body extends StatelessWidget {
           duration: Duration(seconds: 30),
           builder: (_, dynamic value, child) => Text(
             "00:${value.toInt()}",
-            style: TextStyle(color: kPrimaryColor),
+            style: GoogleFonts.poppins(color: kPrimaryColor),
           ),
           onEnd: () {},
         )

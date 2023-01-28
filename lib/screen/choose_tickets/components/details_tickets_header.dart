@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 import '../../../models/event/event.dart';
 
-class TicketHeader extends StatelessWidget {
-  const TicketHeader({Key? key, required this.event}) : super(key: key);
+class DetailsTicketHeader extends StatelessWidget {
+  const DetailsTicketHeader({Key? key, required this.event}) : super(key: key);
 
   final EventModel? event;
   @override
@@ -22,14 +23,14 @@ class TicketHeader extends StatelessWidget {
           children: [
             Text(
               event!.title,
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
                   fontSize: 18),
             ),
             Text(
               event!.day + " " + event!.date,
-              style: TextStyle(color: Colors.black, fontSize: 18),
+              style: GoogleFonts.poppins(color: Colors.black, fontSize: 18),
             ),
           ],
         ),

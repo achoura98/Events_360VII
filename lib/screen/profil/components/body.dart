@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../constant/colors.dart';
+import '../../constant/constants.dart';
+import '../../constant/size_config.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -57,7 +59,7 @@ class Body extends StatelessWidget {
                       prefixIconColor: kPrimaryColor,
                       label: Text(
                         "Nom Complet",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       prefixIcon: Icon(
@@ -65,7 +67,7 @@ class Body extends StatelessWidget {
                         color: Colors.black,
                       ),
                       border: outlineInputBorder(),
-                      labelStyle: TextStyle(color: kPrimaryColor),
+                      labelStyle: GoogleFonts.poppins(color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 3.0, color: kPrimaryColor))),
@@ -76,10 +78,11 @@ class Body extends StatelessWidget {
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(100)),
                       prefixIconColor: Colors.black,
-                      floatingLabelStyle: TextStyle(color: kPrimaryColor),
+                      floatingLabelStyle:
+                          GoogleFonts.poppins(color: kPrimaryColor),
                       label: Text(
                         "E-Mail",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       prefixIcon: Icon(
@@ -87,7 +90,7 @@ class Body extends StatelessWidget {
                         color: Colors.black,
                       ),
                       border: outlineInputBorder(),
-                      labelStyle: TextStyle(color: kPrimaryColor),
+                      labelStyle: GoogleFonts.poppins(color: kPrimaryColor),
                       focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 3.0, color: kPrimaryColor))),
@@ -99,7 +102,7 @@ class Body extends StatelessWidget {
                           borderRadius: BorderRadius.circular(100)),
                       label: Text(
                         "No Téléphone",
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold, color: Colors.black),
                       ),
                       prefixIcon: Icon(
@@ -117,17 +120,19 @@ class Body extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Modifier profil",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)),
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: kPrimaryColor,
-                        side: BorderSide.none,
-                        shape: StadiumBorder()),
+                  child: Container(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Modifier profil",
+                          style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20)),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: kPrimaryColor,
+                          side: BorderSide.none,
+                          shape: StadiumBorder()),
+                    ),
                   ),
                 )
               ],

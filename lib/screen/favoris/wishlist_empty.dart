@@ -1,7 +1,8 @@
 import 'package:event_360/screen/nav%20bar/nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants.dart';
+import '../constant/colors.dart';
 
 class WishlistEmpty extends StatelessWidget {
   const WishlistEmpty({Key? key}) : super(key: key);
@@ -30,10 +31,10 @@ class WishlistEmpty extends StatelessWidget {
                     child: Text(
                       "Vous n'avez aucun évènement avec la mention j'aime. Trouver un évènement qui vous convient",
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 18,
+                      style: GoogleFonts.poppins(
+                        fontSize: 15,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
+                        color: kPrimaryTextColor,
                       ),
                     ),
                   ),
@@ -41,7 +42,7 @@ class WishlistEmpty extends StatelessWidget {
                     onPressed: (() =>
                         Navigator.pushNamed(context, BubbleNavBar.routeName)),
                     child: Text("Trouver mon évènement".toUpperCase(),
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 20)),

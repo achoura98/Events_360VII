@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 import '../../../models/event/event.dart';
-import '../../../size_config.dart';
+import '../../constant/size_config.dart';
 
 class TicketCountwWdget extends StatelessWidget {
   const TicketCountwWdget({

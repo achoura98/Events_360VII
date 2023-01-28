@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../../constants.dart';
-import '../../../size_config.dart';
+import '../../constant/colors.dart';
+import '../../constant/size_config.dart';
 
 class ProfilMenuWidget extends StatelessWidget {
   const ProfilMenuWidget({
@@ -32,14 +33,7 @@ class ProfilMenuWidget extends StatelessWidget {
         child: Icon(icon, color: kPrimaryColor),
       ),
       title: Text(title,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1
-              ?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Colors.black)
-              .apply(color: textColor)),
+          style: GoogleFonts.poppins(color: kPrimaryTextColor, fontSize: 20)),
       trailing: endIcon
           ? Container(
               height: getProportionateScreenHeight(30),

@@ -1,12 +1,11 @@
 import 'package:badges/badges.dart';
-import 'package:event_360/constants.dart';
 import 'package:event_360/models/event/data.dart';
 import 'package:event_360/screen/favoris/wishlist_empty.dart';
 import 'package:event_360/screen/favoris/wishlist_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../cart/cart_screen.dart';
+import '../constant/colors.dart';
 
 class WishlistScreen extends StatelessWidget {
   static String routeName = "/wishlistScreen";
@@ -19,12 +18,12 @@ class WishlistScreen extends StatelessWidget {
         return [
           SliverAppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: kPrimaryColor,
+            backgroundColor: kBackgroungColors,
             floating: true,
             snap: true,
             title: Text("Favoris",
-                style: TextStyle(
-                    color: Colors.white,
+                style: GoogleFonts.poppins(
+                    color: kPrimaryColor,
                     fontWeight: FontWeight.bold,
                     fontSize: 25)),
             actions: [
@@ -45,9 +44,9 @@ class WishlistScreen extends StatelessWidget {
                             ),
                             animationDuration: Duration(milliseconds: 300),
                             child: Icon(
-                              LineAwesomeIcons.bell,
+                              Icons.notifications,
                               size: 30,
-                              color: Colors.white,
+                              color: Colors.grey,
                             )),
                       ),
                     ),
@@ -64,13 +63,13 @@ class WishlistScreen extends StatelessWidget {
                             badgeColor: Colors.white,
                             badgeContent: Text(
                               "0",
-                              style: TextStyle(color: kPrimaryColor),
+                              style: GoogleFonts.poppins(color: kPrimaryColor),
                             ),
                             animationDuration: Duration(milliseconds: 300),
                             child: Icon(
-                              LineAwesomeIcons.shopping_cart,
+                              Icons.shopping_cart,
                               size: 30,
-                              color: Colors.white,
+                              color: Colors.grey,
                             )),
                       ),
                     ),
@@ -84,7 +83,7 @@ class WishlistScreen extends StatelessWidget {
       body: wishlist.isNotEmpty
           ? WishlistEmpty()
           : ListView.builder(
-              itemCount: 2,
+              itemCount: 5,
               itemBuilder: (BuildContext ctx, int index) {
                 return WishlistCard(event: upcomingHomeEvents[index]);
               },

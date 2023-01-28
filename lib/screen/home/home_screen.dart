@@ -1,12 +1,13 @@
 import 'package:badges/badges.dart';
-import 'package:event_360/constants.dart';
 import 'package:event_360/screen/home/components/new_components/search_field.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../models/cart/event_card.dart';
 import '../../models/event/data.dart';
 import '../cart/cart_screen.dart';
+import '../constant/colors.dart';
 import '../feeds/feeds.dart';
 import 'components/new_components/event_header.dart';
 
@@ -48,12 +49,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  category['name'],
-                  style: TextStyle(
-                      color: _selectedCategory == categories.indexOf(category)
-                          ? kPrimaryColor
-                          : Colors.black,
-                      fontWeight: FontWeight.bold),
+                  category['categoryName'],
+                  style: GoogleFonts.poppins(
+                    color: _selectedCategory == categories.indexOf(category)
+                        ? kPrimaryColor
+                        : Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
                 )
               ],
             ),
@@ -73,20 +75,22 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: NestedScrollView(
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
               SliverAppBar(
                 automaticallyImplyLeading: false,
-                backgroundColor: kPrimaryColor,
+                backgroundColor: kBackgroungColors,
                 floating: true,
                 snap: true,
-                title: Text("Acceuil",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25)),
+                title: Text("Bienvenue",
+                    style: GoogleFonts.poppins(
+                      color: kPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    )),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),
@@ -101,13 +105,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 badgeColor: Colors.white,
                                 badgeContent: Text(
                                   "0",
-                                  style: TextStyle(color: kPrimaryColor),
+                                  style:
+                                      GoogleFonts.poppins(color: kPrimaryColor),
                                 ),
                                 animationDuration: Duration(milliseconds: 300),
                                 child: Icon(
-                                  LineAwesomeIcons.bell,
+                                  Icons.notifications,
                                   size: 30,
-                                  color: Colors.white,
+                                  color: Colors.grey,
                                 )),
                           ),
                         ),
@@ -124,13 +129,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 badgeColor: Colors.white,
                                 badgeContent: Text(
                                   "0",
-                                  style: TextStyle(color: kPrimaryColor),
+                                  style:
+                                      GoogleFonts.poppins(color: kPrimaryColor),
                                 ),
                                 animationDuration: Duration(milliseconds: 300),
                                 child: Icon(
-                                  LineAwesomeIcons.shopping_cart,
+                                  Icons.shopping_cart,
                                   size: 30,
-                                  color: Colors.white,
+                                  color: Colors.grey,
                                 )),
                           ),
                         ),
@@ -160,7 +166,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                             Text(
                               "Lomé",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                   color: kPrimaryColor,
                                   fontSize: 18,
                                   decoration: TextDecoration.underline,

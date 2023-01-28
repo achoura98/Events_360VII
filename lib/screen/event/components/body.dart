@@ -3,12 +3,12 @@ import 'package:event_360/screen/choose_tickets/choose_tickets.dart';
 import 'package:event_360/screen/event/components/other_event_card.dart';
 
 import 'package:event_360/screen/home/components/new_components/custom_like_icon.dart';
-import 'package:event_360/size_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 import '../../../models/event/data.dart';
 
 class Body extends StatelessWidget {
@@ -55,7 +55,7 @@ class Body extends StatelessWidget {
                               },
                               icon: Icon(
                                 CupertinoIcons.share,
-                                color: Colors.white,
+                                color: Colors.grey,
                               ))
                         ],
                       )
@@ -64,52 +64,43 @@ class Body extends StatelessWidget {
                 ),
               ]),
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Center(
-                      child: Text(
-                        "Détails de l'évènement",
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: getProportionateScreenWidth(280),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      event!.title,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: kPrimaryColor),
-                    ),
-                    Text(
-                      event!.about,
-                      textAlign: TextAlign.justify,
-                      maxLines: 9,
-                      overflow: TextOverflow.ellipsis,
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          event!.title,
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: kPrimaryColor, width: 2),
+                              color: kPrimaryColor.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(15)),
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          child: Text(
+                            event!.categoryName,
+                            style: GoogleFonts.poppins(
+                                color: kPrimaryColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
               SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                child: Divider(),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Container(
                   child: Column(
                     children: [
@@ -121,17 +112,18 @@ class Body extends StatelessWidget {
                             color: kPrimaryColor,
                             size: 25,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: 15),
                           Text(
-                            event!.date,
+                            event!.day + ", " + event!.date,
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Mulish-ExtraBoldItalic",
-                                fontSize: 20),
+                                color: Colors.grey,
+                                fontFamily: "Poppins-Bold.ttf",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           )
                         ],
                       ),
-                      SizedBox(height: 3),
+                      SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -140,17 +132,18 @@ class Body extends StatelessWidget {
                             color: kPrimaryColor,
                             size: 25,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: 15),
                           Text(
                             event!.fromTo,
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Mulish-ExtraBoldItalic",
-                                fontSize: 20),
+                                color: Colors.grey,
+                                fontFamily: "Poppins-Bold.ttf",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           )
                         ],
                       ),
-                      SizedBox(height: 3),
+                      SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -159,17 +152,18 @@ class Body extends StatelessWidget {
                             color: kPrimaryColor,
                             size: 25,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: 15),
                           Text(
                             event!.duration + ' Heure',
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Mulish-ExtraBoldItalic",
-                                fontSize: 20),
+                                color: Colors.grey,
+                                fontFamily: "Poppins-Bold.ttf",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           )
                         ],
                       ),
-                      SizedBox(height: 3),
+                      SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
@@ -178,34 +172,44 @@ class Body extends StatelessWidget {
                             color: kPrimaryColor,
                             size: 25,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: 15),
                           Text(
                             event!.location,
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Mulish-ExtraBoldItalic",
-                                fontSize: 20),
+                                color: Colors.grey,
+                                fontFamily: "Poppins-Bold.ttf",
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18),
                           )
                         ],
                       ),
-                      SizedBox(height: 3),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.tag,
-                            color: kPrimaryColor,
-                            size: 25,
-                          ),
-                          SizedBox(width: 3),
-                          Text(
-                            event!.cost,
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: "Mulish-Black",
-                                fontSize: 20),
-                          )
-                        ],
+                      SizedBox(height: 15),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        "A propos de l'évènement",
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: kPrimaryColor),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        event!.about,
+                        textAlign: TextAlign.left,
+                        maxLines: 6,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

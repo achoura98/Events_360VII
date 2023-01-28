@@ -1,10 +1,10 @@
 import 'package:badges/badges.dart';
-import 'package:event_360/constants.dart';
 import 'package:event_360/screen/feeds/components/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../cart/cart_screen.dart';
+import '../constant/colors.dart';
 
 class FeedScreen extends StatelessWidget {
   static String routeName = "/feed";

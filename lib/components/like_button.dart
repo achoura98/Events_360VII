@@ -1,6 +1,7 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
+
+import '../screen/constant/colors.dart';
 
 class LikeButtonWidget extends StatefulWidget {
   const LikeButtonWidget({Key? key}) : super(key: key);

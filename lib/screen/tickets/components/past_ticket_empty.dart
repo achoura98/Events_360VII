@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
+import '../../constant/colors.dart';
 
 class PastTicketEmpty extends StatelessWidget {
   const PastTicketEmpty({Key? key}) : super(key: key);

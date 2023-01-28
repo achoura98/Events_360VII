@@ -1,5 +1,7 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+import '../../../constant/colors.dart';
 
 class Searchfield extends StatelessWidget {
   const Searchfield({
@@ -23,7 +25,7 @@ class Searchfield extends StatelessWidget {
                 borderSide: BorderSide(width: 3, color: kPrimaryColor),
                 borderRadius: BorderRadius.circular(10)),
             hintText: "Recherche",
-            hintStyle: TextStyle(color: kPrimaryColor),
+            hintStyle: GoogleFonts.poppins(color: kPrimaryColor),
             prefixIcon: Icon(Icons.search),
             prefixIconColor: kPrimaryColor,
             contentPadding: EdgeInsets.all(15)),

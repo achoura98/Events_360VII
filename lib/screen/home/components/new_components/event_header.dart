@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../size_config.dart';
+import '../../../constant/size_config.dart';
 
 class EventHeaderWidget extends StatelessWidget {
   const EventHeaderWidget({
@@ -20,14 +21,14 @@ class EventHeaderWidget extends StatelessWidget {
         children: [
           Text(
             text,
-            style: TextStyle(
+            style: GoogleFonts.poppins(
                 fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           TextButton(
               onPressed: onPressed,
               child: Text(
                 'Voir tout',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),

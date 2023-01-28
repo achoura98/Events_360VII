@@ -1,5 +1,4 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:event_360/constants.dart';
 import 'package:event_360/screen/favoris/wishlist.dart';
 import 'package:event_360/screen/home/home_screen.dart';
 import 'package:event_360/screen/profil/profil.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 // import '../feeds/feeds.dart';
+import '../constant/colors.dart';
 import '../tickets/ticket_screen.dart';
 
 class BubbleNavBar extends StatefulWidget {

@@ -1,5 +1,6 @@
-import 'package:event_360/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../../constant/colors.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

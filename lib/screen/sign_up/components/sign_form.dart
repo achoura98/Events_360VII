@@ -1,10 +1,12 @@
 import 'package:event_360/components/custom_suffix_icon.dart';
 import 'package:event_360/components/form_error.dart';
-import 'package:event_360/constants.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/opt%20screen/verification_otp.dart';
 import 'package:flutter/material.dart';
 
-import '../../../size_config.dart';
+import '../../constant/colors.dart';
+import '../../constant/size_config.dart';
+import '../../constant/text_string.dart';
 
 //formulaire d'inscription
 class SignUpForm extends StatefulWidget {

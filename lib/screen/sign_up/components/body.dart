@@ -1,11 +1,13 @@
 import 'package:event_360/components/social_card.dart';
-import 'package:event_360/constants.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/opt%20screen/verification_otp.dart';
-import 'package:event_360/size_config.dart';
+import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 import '../../../components/custom_suffix_icon.dart';
+import '../../constant/colors.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -28,7 +30,7 @@ class Body extends StatelessWidget {
               Text(
                 "Entrer vos coordonnées ou continuer \navec les médias sociaux",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: SizeConfig.screenHeight! * 0.07,
@@ -43,7 +45,7 @@ class Body extends StatelessWidget {
                     labelStyle: TextStyle(
                         fontWeight: FontWeight.bold, color: kPrimaryColor),
                     hintText: "Entrez votre numero",
-                    hintStyle: TextStyle(fontWeight: FontWeight.bold),
+                    hintStyle: GoogleFonts.poppins(fontWeight: FontWeight.bold),
                     floatingLabelBehavior: FloatingLabelBehavior.always,
                     suffixIcon: CustomSuffixIcon(
                       svgIcon: "assets/icons/Phone.svg",
@@ -61,7 +63,7 @@ class Body extends StatelessWidget {
                         MaterialPageRoute(builder: (c) => VerificationOtp()));
                   },
                   child: Text("Continuer".toUpperCase(),
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
@@ -97,7 +99,7 @@ class Body extends StatelessWidget {
               Text(
                   "En continuant, Vous confirmez que vous acceptez \n nos conditions générales",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold)),
+                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
             ],
           ),
         ),

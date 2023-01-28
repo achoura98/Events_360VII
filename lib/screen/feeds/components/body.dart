@@ -1,8 +1,9 @@
-import 'package:event_360/constants.dart';
 import 'package:event_360/models/event/data.dart';
 import 'package:event_360/models/event/event.dart';
-import 'package:event_360/size_config.dart';
+import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+
+import '../../constant/colors.dart';
 
 class Body extends StatefulWidget {
   const Body({
@@ -60,7 +61,7 @@ class _BodyState extends State<Body> {
                         "Aucun resultat trouvé",
                         style: TextStyle(
                           fontSize: 22.0,
-                          color: kTextColor,
+                          color: kPrimaryTextColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -78,7 +79,7 @@ class _BodyState extends State<Body> {
                             subtitle: Text(
                               display_list[index].location,
                               style: TextStyle(
-                                  color: kTextColor,
+                                  color: kPrimaryTextColor,
                                   fontWeight: FontWeight.bold),
                             ),
                             leading: Image.asset(

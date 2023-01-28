@@ -1,8 +1,8 @@
 import 'package:event_360/models/event/event.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:like_button/like_button.dart';
-
-import '../../constants.dart';
+import '../constant/colors.dart';
 import '../event/event_detail.dart';
 
 class WishlistCard extends StatelessWidget {
@@ -20,7 +20,6 @@ class WishlistCard extends StatelessWidget {
         onTap: (() => Navigator.pushNamed(context, EventDetail.routeName,
             arguments: EventDetailArguments(event: event))),
         child: Container(
-          margin: EdgeInsets.all(3.0),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10.0),
@@ -37,7 +36,6 @@ class WishlistCard extends StatelessWidget {
                         bottomLeft: Radius.circular(10.0)),
                     child: Image.asset(
                       event.images,
-                      height: 138,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -52,21 +50,21 @@ class WishlistCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         event.day + ', ' + event.date,
-                        style: TextStyle(
-                          fontSize: 20.0,
+                        style: GoogleFonts.poppins(
+                          fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                           color: kPrimaryColor,
                         ),
                       ),
                       Text(
                         event.title,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
                       ),
                       Text(
                         event.location,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18.0),
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold, fontSize: 15.0),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,

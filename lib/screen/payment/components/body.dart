@@ -1,10 +1,13 @@
-import 'package:event_360/constants.dart';
 import 'package:event_360/models/event/data.dart';
+import 'package:event_360/screen/constant/image_string.dart';
+import 'package:event_360/screen/constant/text_string.dart';
 import 'package:event_360/screen/payment/components/billing_card.dart';
+import 'package:event_360/screen/payment/components/payement_mode_widget.dart';
 import 'package:event_360/screen/payment/components/reservation_header.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/event/event.dart';
+import '../../constant/colors.dart';
 
 class Body extends StatefulWidget {
   final EventModel? event;
@@ -70,31 +73,20 @@ class _BodyState extends State<Body> {
                         fontSize: 25,
                         fontWeight: FontWeight.bold),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        customRadio(
-                            text: 'Carte de crédit',
-                            index: 1,
-                            onClicked: () => showModalBottomSheet(
-                                context: context,
-                                builder: (context) => buildsheet())),
-                        customRadio(
-                            text: 'T-money',
-                            index: 2,
-                            onClicked: () => showModalBottomSheet(
-                                context: context,
-                                builder: (context) => buildsheet1())),
-                        customRadio(
-                            text: 'Flooz',
-                            index: 3,
-                            onClicked: () => showModalBottomSheet(
-                                context: context,
-                                builder: (context) => buildsheet2()))
-                      ],
-                    ),
+                  PayementModeWidget(
+                    image: tPayementmodeImage1,
+                    onPressed: () {},
+                    title: tPayementModeTitle1,
+                  ),
+                  PayementModeWidget(
+                    image: tPayementmodeImage2,
+                    onPressed: () {},
+                    title: tPayementModeTitle2,
+                  ),
+                  PayementModeWidget(
+                    image: tPayementmodeImage3,
+                    onPressed: () {},
+                    title: tPayementModeTitle3,
                   )
                 ],
               ),

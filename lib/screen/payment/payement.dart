@@ -2,7 +2,7 @@ import 'package:event_360/screen/payment/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import '../../constants.dart';
+import '../constant/colors.dart';
 import '../../models/event/event.dart';
 
 class PayementScreen extends StatelessWidget {

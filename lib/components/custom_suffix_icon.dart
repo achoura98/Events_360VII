@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flutter_svg/flutter_svg.dart';
-import '../constants.dart';
-import '../size_config.dart';
+import '../screen/constant/colors.dart';
+import '../screen/constant/size_config.dart';
 
 class CustomSuffixIcon extends StatelessWidget {
   const CustomSuffixIcon({
@@ -23,7 +23,7 @@ class CustomSuffixIcon extends StatelessWidget {
       ),
       child: SvgPicture.asset(
         svgIcon,
-        color: kTextColor,
+        color: kPrimaryTextColor,
         height: getProportionateScreenWidth(18),
       ),
     );

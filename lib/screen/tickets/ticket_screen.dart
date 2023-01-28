@@ -4,9 +4,9 @@ import 'package:event_360/screen/tickets/components/past_tickets_card.dart';
 import 'package:event_360/screen/tickets/components/ticket_empty.dart';
 import 'package:event_360/screen/tickets/components/tickets_card.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../constants.dart';
+import '../constant/colors.dart';
 
 class TicketScreen extends StatelessWidget {
   static String routeName = "/TicketScreen";
@@ -18,22 +18,22 @@ class TicketScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
           appBar: AppBar(
-            backgroundColor: kPrimaryColor,
+            backgroundColor: kBackgroungColors,
             centerTitle: true,
             title: Text(
               "Billets",
-              style: TextStyle(
-                  color: Colors.white,
+              style: GoogleFonts.poppins(
+                  color: kPrimaryColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 25),
             ),
             automaticallyImplyLeading: false,
             bottom: TabBar(
-                labelStyle:
-                    TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                labelColor: Colors.white,
+                labelStyle: GoogleFonts.poppins(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+                labelColor: kPrimaryColor,
                 unselectedLabelColor: Colors.black,
-                indicatorColor: Colors.white,
+                indicatorColor: kPrimaryColor,
                 tabs: [
                   Tab(
                     text: "Prochainement",
