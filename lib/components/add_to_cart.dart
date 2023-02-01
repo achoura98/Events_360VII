@@ -28,7 +28,7 @@ class AddToCartButton extends StatelessWidget {
             child: Text(
               "Ajouter au panier",
               style: GoogleFonts.poppins(
-                  fontSize: 20,
+                  fontSize: 16,
                   color: Colors.white,
                   fontWeight: FontWeight.bold),
             ),

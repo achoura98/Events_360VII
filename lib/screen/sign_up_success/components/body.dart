@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
             height: 50,
             child: ElevatedButton(
               onPressed: (() =>
-                  Navigator.pushNamed(context, BubbleNavBar.routeName)),
+                  Navigator.pushNamed(context, NavBarWidget.routeName)),
               child: Text("Continuer".toUpperCase(),
                   style: GoogleFonts.poppins(
                       color: Colors.white,

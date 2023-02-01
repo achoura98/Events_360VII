@@ -25,14 +25,14 @@ class TicketScreen extends StatelessWidget {
               style: GoogleFonts.poppins(
                   color: kPrimaryColor,
                   fontWeight: FontWeight.bold,
-                  fontSize: 25),
+                  fontSize: 20),
             ),
             automaticallyImplyLeading: false,
             bottom: TabBar(
                 labelStyle: GoogleFonts.poppins(
-                    fontSize: 20, fontWeight: FontWeight.bold),
+                    fontSize: 15, fontWeight: FontWeight.bold),
                 labelColor: kPrimaryColor,
-                unselectedLabelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
                 indicatorColor: kPrimaryColor,
                 tabs: [
                   Tab(

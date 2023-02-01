@@ -40,7 +40,7 @@ class WishlistEmpty extends StatelessWidget {
                   ),
                   ElevatedButton(
                     onPressed: (() =>
-                        Navigator.pushNamed(context, BubbleNavBar.routeName)),
+                        Navigator.pushNamed(context, NavBarWidget.routeName)),
                     child: Text("Trouver mon évènement".toUpperCase(),
                         style: GoogleFonts.poppins(
                             color: Colors.white,

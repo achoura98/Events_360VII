@@ -30,7 +30,8 @@ class Body extends StatelessWidget {
               Text(
                 "Entrer vos coordonnées ou continuer \navec les médias sociaux",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold, color: kSecondTextColor),
               ),
               SizedBox(
                 height: SizeConfig.screenHeight! * 0.07,
@@ -99,7 +100,8 @@ class Body extends StatelessWidget {
               Text(
                   "En continuant, Vous confirmez que vous acceptez \n nos conditions générales",
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.poppins(fontWeight: FontWeight.bold)),
+                  style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.bold, color: kSecondTextColor)),
             ],
           ),
         ),

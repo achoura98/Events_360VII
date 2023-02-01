@@ -1,7 +1,5 @@
-import 'package:event_360/models/event/data.dart';
 import 'package:event_360/screen/constant/image_string.dart';
 import 'package:event_360/screen/constant/text_string.dart';
-import 'package:event_360/screen/payment/components/billing_card.dart';
 import 'package:event_360/screen/payment/components/payement_mode_widget.dart';
 import 'package:event_360/screen/payment/components/reservation_header.dart';
 import 'package:flutter/material.dart';
@@ -21,28 +19,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   int selected = 0;
 
-  Widget customRadio(
-      {required String text,
-      required int index,
-      required VoidCallback onClicked}) {
-    return OutlinedButton(
-      onPressed: onClicked,
-      child: Text(
-        text,
-        style: TextStyle(
-            color: selected == index ? kPrimaryColor : Colors.black,
-            fontSize: 20,
-            fontWeight: FontWeight.bold),
-      ),
-      style: OutlinedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          side: BorderSide(
-              color: (selected == index) ? kPrimaryColor : Colors.grey,
-              width: 3)),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +26,6 @@ class _BodyState extends State<Body> {
         children: [
           PayementHeader(
             event: widget.event,
-          ),
-          SizedBox(height: 30),
-          BillingCard(
-            event: popularEvents[0],
           ),
           SizedBox(height: 30),
           Padding(
@@ -97,7 +69,3 @@ class _BodyState extends State<Body> {
     );
   }
 }
-
-Widget buildsheet() => Container();
-Widget buildsheet1() => Container();
-Widget buildsheet2() => Container();

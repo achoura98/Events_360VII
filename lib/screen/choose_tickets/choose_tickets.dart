@@ -18,6 +18,7 @@ class ChooseTicketScreen extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
+        backgroundColor: kBackgroungColors,
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
             icon: Icon(

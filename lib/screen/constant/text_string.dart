@@ -27,3 +27,8 @@ const String tOnboardingCounter3 = "3/3";
 const String tPayementModeTitle1 = "Carte de crédit";
 const String tPayementModeTitle2 = "Moov Money";
 const String tPayementModeTitle3 = "T-Money";
+
+// billing detail text
+
+const String tBillingDetailText =
+    "Réservez rapidement car les places se remplissent rapidement";

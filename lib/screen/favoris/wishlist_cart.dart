@@ -21,23 +21,28 @@ class WishlistCard extends StatelessWidget {
             arguments: EventDetailArguments(event: event))),
         child: Container(
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10.0),
-              border: Border.all(color: kPrimaryColor, width: 2)),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.grey.shade500,
+                  offset: Offset(2.0, 2.0),
+                  blurRadius: 10.0,
+                  spreadRadius: 1.0),
+            ],
+            borderRadius: BorderRadius.circular(10.0),
+          ),
           child: Row(
             children: [
               Container(
                 height: 138,
                 width: 138,
-                child: Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(10.0),
-                        bottomLeft: Radius.circular(10.0)),
-                    child: Image.asset(
-                      event.images,
-                      fit: BoxFit.fill,
-                    ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      bottomLeft: Radius.circular(10.0)),
+                  child: Image.asset(
+                    event.images,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

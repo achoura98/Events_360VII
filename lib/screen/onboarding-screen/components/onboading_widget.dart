@@ -32,7 +32,7 @@ class OnboardingPageWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 20,
                     color: Colors.black),
               ),
               Text(model.subtitle,
@@ -40,7 +40,7 @@ class OnboardingPageWidget extends StatelessWidget {
                   maxLines: 4,
                   style: GoogleFonts.poppins(
                       fontWeight: FontWeight.bold,
-                      fontSize: 20,
+                      fontSize: 15,
                       color: Colors.blueGrey[700])),
             ],
           ),

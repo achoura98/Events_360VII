@@ -26,7 +26,8 @@ class Body extends StatelessWidget {
               Text(
                 "Consulter votre messagerie pour valider le code",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.bold, color: kSecondTextColor),
               ),
               SizedBox(height: getProportionateScreenHeight(50)),
               Pinput(

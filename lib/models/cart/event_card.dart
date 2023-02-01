@@ -23,9 +23,16 @@ class EventCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
-            border: Border.all(width: 3, color: kPrimaryColor)),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.shade500,
+                offset: Offset(2.0, 2.0),
+                blurRadius: 10.0,
+                spreadRadius: 1.0),
+          ],
+          borderRadius: BorderRadius.circular(10.0),
+        ),
         width: width,
         child: Column(
           children: [
@@ -73,7 +80,7 @@ class EventCard extends StatelessWidget {
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
-                                  fontSize: 18),
+                                  fontSize: 15),
                             ),
                           ],
                         ),
@@ -93,7 +100,7 @@ class EventCard extends StatelessWidget {
                       Text(
                         event.title,
                         style: GoogleFonts.poppins(
-                            fontSize: 20,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: Colors.black),
                       ),
@@ -110,7 +117,7 @@ class EventCard extends StatelessWidget {
                         style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold,
                             color: Colors.grey,
-                            fontSize: 18),
+                            fontSize: 15),
                       )
                     ],
                   ),

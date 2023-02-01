@@ -17,8 +17,16 @@ class PastTicketCard extends StatelessWidget {
           height: 140,
           child: Container(
             decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(10))),
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.shade500,
+                    offset: Offset(2.0, 2.0),
+                    blurRadius: 10.0,
+                    spreadRadius: 1.0),
+              ],
+              borderRadius: BorderRadius.circular(10.0),
+            ),
             margin: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

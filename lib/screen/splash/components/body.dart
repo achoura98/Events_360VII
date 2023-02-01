@@ -4,6 +4,7 @@ import 'package:event_360/screen/onboarding-screen/onboarding_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../constant/colors.dart';
 
@@ -38,7 +39,7 @@ class _BodyState extends State<Body> {
                     SizedBox(height: 60.0),
                     Text(
                       "EVENTS_360",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: getProportionateScreenWidth(30),
                         color: kPrimaryColor,
                         fontWeight: FontWeight.bold,

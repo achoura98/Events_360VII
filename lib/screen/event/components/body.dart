@@ -1,12 +1,12 @@
 import 'package:event_360/models/event/event.dart';
 import 'package:event_360/screen/choose_tickets/choose_tickets.dart';
+import 'package:event_360/screen/event/components/event_info_widget.dart';
 import 'package:event_360/screen/event/components/other_event_card.dart';
 
 import 'package:event_360/screen/home/components/new_components/custom_like_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../constant/colors.dart';
 import '../../../models/event/data.dart';
@@ -38,8 +38,8 @@ class Body extends StatelessWidget {
                     children: [
                       IconButton(
                         icon: Icon(
-                          LineAwesomeIcons.angle_left,
-                          color: Colors.white,
+                          Icons.arrow_back_ios_new,
+                          color: Colors.grey,
                         ),
                         onPressed: () {
                           Navigator.pop(context);
@@ -73,7 +73,7 @@ class Body extends StatelessWidget {
                       children: [
                         Text(
                           event!.title,
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                               fontSize: 20,
                               color: Colors.black,
                               fontWeight: FontWeight.bold),
@@ -98,106 +98,20 @@ class Body extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.calendar,
-                            color: kPrimaryColor,
-                            size: 25,
-                          ),
-                          SizedBox(width: 15),
-                          Text(
-                            event!.day + ", " + event!.date,
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Poppins-Bold.ttf",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.clock_1,
-                            color: kPrimaryColor,
-                            size: 25,
-                          ),
-                          SizedBox(width: 15),
-                          Text(
-                            event!.fromTo,
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Poppins-Bold.ttf",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.clock,
-                            color: kPrimaryColor,
-                            size: 25,
-                          ),
-                          SizedBox(width: 15),
-                          Text(
-                            event!.duration + ' Heure',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Poppins-Bold.ttf",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Icon(
-                            LineAwesomeIcons.map_marked,
-                            color: kPrimaryColor,
-                            size: 25,
-                          ),
-                          SizedBox(width: 15),
-                          Text(
-                            event!.location,
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontFamily: "Poppins-Bold.ttf",
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 15),
-                    ],
-                  ),
-                ),
+                padding: const EdgeInsets.all(10.0),
+                child: EventInfoWidget(event: event),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Container(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "A propos de l'évènement",
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                             color: kPrimaryColor),
@@ -205,11 +119,12 @@ class Body extends StatelessWidget {
                       SizedBox(height: 10),
                       Text(
                         event!.about,
-                        textAlign: TextAlign.left,
                         maxLines: 6,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.poppins(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: kSecondTextColor),
                       ),
                     ],
                   ),
@@ -230,13 +145,14 @@ class Body extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(event!.auteur,
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           fontSize: 22,
                           color: kPrimaryColor,
                           fontWeight: FontWeight.bold)),
                   Text(
                     "Organisateur",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                    style: GoogleFonts.poppins(
+                        fontSize: 18, fontWeight: FontWeight.w600),
                   ),
                 ],
               ),
@@ -248,7 +164,7 @@ class Body extends StatelessWidget {
                 padding: const EdgeInsets.only(right: 60.0),
                 child: Text(
                   "Plus d'évènement comme\ncelui-ci",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                       fontSize: 20,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -286,7 +202,7 @@ class Body extends StatelessWidget {
                       context, ChooseTicketScreen.routeName,
                       arguments: ChooseTicketsArguments(event: event)),
                   child: Text("Acheter Ticket",
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 20)),
