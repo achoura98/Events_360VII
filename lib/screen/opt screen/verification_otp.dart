@@ -1,7 +1,6 @@
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/opt%20screen/components/body.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../constant/colors.dart';
 
@@ -12,19 +11,11 @@ class VerificationOtp extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           backgroundColor: kBackgroungColors,
-          leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(
-                LineAwesomeIcons.angle_left,
-                color: kPrimaryColor,
-              )),
           title: Text(
             "Vérification Otp",
-            style: GoogleFonts.poppins(
-                color: kPrimaryColor,
-                fontSize: 25,
-                fontWeight: FontWeight.bold),
+            style: headingStyle2,
           ),
           centerTitle: true,
         ),

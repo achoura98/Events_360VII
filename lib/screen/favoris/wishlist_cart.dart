@@ -53,23 +53,33 @@ class WishlistCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        event.day + ', ' + event.date,
-                        style: GoogleFonts.poppins(
-                          fontSize: 15.0,
-                          fontWeight: FontWeight.bold,
-                          color: kPrimaryColor,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            event.day + ',\n ' + event.date,
+                            style: GoogleFonts.poppins(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.bold,
+                              color: kPrimaryColor,
+                            ),
+                            maxLines: 2,
+                          ),
+                          Icon(
+                            Icons.close,
+                            color: kPrimaryColor,
+                          )
+                        ],
                       ),
                       Text(
                         event.title,
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                            fontWeight: FontWeight.bold, fontSize: 14.0),
                       ),
                       Text(
                         event.location,
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 15.0),
+                            fontWeight: FontWeight.bold, fontSize: 14.0),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,

@@ -1,4 +1,5 @@
 import 'package:event_360/models/event/data.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/tickets/components/past_ticket_empty.dart';
 import 'package:event_360/screen/tickets/components/past_tickets_card.dart';
 import 'package:event_360/screen/tickets/components/ticket_empty.dart';
@@ -19,13 +20,9 @@ class TicketScreen extends StatelessWidget {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: kBackgroungColors,
-            centerTitle: true,
             title: Text(
               "Billets",
-              style: GoogleFonts.poppins(
-                  color: kPrimaryColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
+              style: headingStyle2,
             ),
             automaticallyImplyLeading: false,
             bottom: TabBar(
@@ -38,12 +35,12 @@ class TicketScreen extends StatelessWidget {
                   Tab(
                     text: "Prochainement",
                   ),
-                  Tab(text: "Billets passés")
+                  Tab(text: "Mes Billets")
                 ]),
           ),
           body: TabBarView(children: [
             ticket.isNotEmpty
-                ? Scaffold(body: TicketEmpty())
+                ? TicketEmpty()
                 : ListView.builder(
                     itemCount: 2,
                     itemBuilder: (BuildContext ctx, int index) {

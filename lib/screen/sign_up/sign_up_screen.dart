@@ -1,7 +1,6 @@
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/sign_up/components/body.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../constant/colors.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -15,10 +14,7 @@ class SignUpScreen extends StatelessWidget {
           backgroundColor: kBackgroungColors,
           title: Text(
             "Inscription",
-            style: GoogleFonts.poppins(
-                color: kPrimaryColor,
-                fontSize: 25,
-                fontWeight: FontWeight.bold),
+            style: headingStyle2,
           ),
         ),
         body: Body(),

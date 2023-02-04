@@ -33,7 +33,10 @@ class ProfilMenuWidget extends StatelessWidget {
         child: Icon(icon, color: kPrimaryColor),
       ),
       title: Text(title,
-          style: GoogleFonts.poppins(color: kPrimaryTextColor, fontSize: 20)),
+          style: GoogleFonts.poppins(
+              color: kSecondTextColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w600)),
       trailing: endIcon
           ? Container(
               height: getProportionateScreenHeight(30),

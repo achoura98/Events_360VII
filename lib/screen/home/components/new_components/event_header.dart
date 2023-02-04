@@ -22,14 +22,14 @@ class EventHeaderWidget extends StatelessWidget {
           Text(
             text,
             style: GoogleFonts.poppins(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
           ),
           TextButton(
               onPressed: onPressed,
               child: Text(
                 'Voir tout',
                 style: GoogleFonts.poppins(
-                    fontSize: 15,
+                    fontSize: 13,
                     fontWeight: FontWeight.bold,
                     color: Colors.black),
               ))

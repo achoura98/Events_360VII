@@ -27,7 +27,7 @@ class EventCard extends StatelessWidget {
           boxShadow: [
             BoxShadow(
                 color: Colors.grey.shade500,
-                offset: Offset(2.0, 2.0),
+                offset: Offset(1.0, 1.0),
                 blurRadius: 10.0,
                 spreadRadius: 1.0),
           ],
@@ -46,8 +46,8 @@ class EventCard extends StatelessWidget {
                     width: double.infinity,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)),
                       child: Image.asset(
                         event.images,
                         fit: BoxFit.fill,

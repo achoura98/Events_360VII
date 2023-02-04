@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/home/components/new_components/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -85,12 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 backgroundColor: kBackgroungColors,
                 floating: true,
                 snap: true,
-                title: Text("Bienvenue",
-                    style: GoogleFonts.poppins(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
-                    )),
+                title: Text("Bienvenue", style: headingStyle2),
                 actions: [
                   Padding(
                     padding: const EdgeInsets.all(10.0),

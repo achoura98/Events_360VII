@@ -21,7 +21,7 @@ class TicketEmpty extends StatelessWidget {
                 backgroundColor: kPrimaryColor,
                 child: CircleAvatar(
                   radius: 83,
-                  backgroundColor: kPrimaryLightColor,
+                  backgroundColor: Colors.white,
                   child: RotatedBox(
                     quarterTurns: -1,
                     child: Icon(
@@ -39,8 +39,8 @@ class TicketEmpty extends StatelessWidget {
             child: Text(
               "Vous n'avez aucun tickets dans votre panier. Trouvez un évènement qui vous convient.",
               style: GoogleFonts.poppins(
-                  color: Colors.black54,
-                  fontSize: 22,
+                  color: kSecondTextColor,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold),
               maxLines: 3,
               textAlign: TextAlign.center,

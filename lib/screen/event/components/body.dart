@@ -23,12 +23,24 @@ class Body extends StatelessWidget {
           child: Column(
             children: [
               Stack(children: [
-                SizedBox(
+                Container(
                   width: double.infinity,
                   height: 300,
-                  child: Image.asset(
-                    event!.images,
-                    fit: BoxFit.fill,
+                  decoration: BoxDecoration(boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.shade500,
+                        offset: Offset(1.0, 1.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 1.0),
+                  ]),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20)),
+                    child: Image.asset(
+                      event!.images,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 Padding(
@@ -171,16 +183,19 @@ class Body extends StatelessWidget {
                   textAlign: TextAlign.start,
                 ),
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    ...List.generate(
-                        weekEvents.length,
-                        (index) => OtherEventCard(
-                              event: weekEvents[index],
-                            ))
-                  ],
+              Padding(
+                padding: const EdgeInsets.only(bottom: 35),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      ...List.generate(
+                          weekEvents.length,
+                          (index) => OtherEventCard(
+                                event: weekEvents[index],
+                              ))
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
@@ -192,23 +207,25 @@ class Body extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () => Navigator.pushNamed(
-                      context, ChooseTicketScreen.routeName,
-                      arguments: ChooseTicketsArguments(event: event)),
-                  child: Text("Acheter Ticket",
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20)),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: kPrimaryColor,
-                    side: BorderSide.none,
+            BottomAppBar(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.pushNamed(
+                        context, ChooseTicketScreen.routeName,
+                        arguments: ChooseTicketsArguments(event: event)),
+                    child: Text("Acheter Ticket",
+                        style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: kPrimaryColor,
+                      side: BorderSide.none,
+                    ),
                   ),
                 ),
               ),

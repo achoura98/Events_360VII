@@ -16,59 +16,62 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final obcontroller = OnboardingController();
 
-    return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          LiquidSwipe(
-            pages: obcontroller.pages,
-            liquidController: obcontroller.controller,
-            onPageChangeCallback: obcontroller.OnPageChangedCallback,
-            slideIconWidget: const Icon(Icons.arrow_back_ios),
-            enableSideReveal: true,
-          ),
-          Positioned(
-              bottom: 60.0,
-              child: OutlinedButton(
-                onPressed: () => obcontroller.animateToNextSlide(),
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    side: const BorderSide(color: Colors.black26),
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(20)),
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                      color: kPrimaryColor, shape: BoxShape.circle),
-                  child: Icon(Icons.arrow_forward_ios),
-                ),
-              )),
-          Positioned(
-              top: 50,
-              right: 20,
-              child: ElevatedButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, SignUpScreen.routeName),
-                child: Text(
-                  "Passer",
-                  style: GoogleFonts.poppins(
-                      color: Colors.white, fontWeight: FontWeight.bold),
-                ),
-                style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
-              )),
-          Obx(
-            () => Positioned(
-                bottom: 10,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: obcontroller.currentPage.value,
-                  count: 3,
-                  effect: WormEffect(
-                    activeDotColor: kPrimaryColor,
-                    dotHeight: 5.0,
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(
+          alignment: Alignment.center,
+          children: [
+            LiquidSwipe(
+              pages: obcontroller.pages,
+              liquidController: obcontroller.controller,
+              onPageChangeCallback: obcontroller.OnPageChangedCallback,
+              slideIconWidget: const Icon(Icons.arrow_back_ios),
+              enableSideReveal: true,
+            ),
+            Positioned(
+                bottom: 60.0,
+                child: OutlinedButton(
+                  onPressed: () => obcontroller.animateToNextSlide(),
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      side: const BorderSide(color: Colors.black26),
+                      shape: const CircleBorder(),
+                      padding: const EdgeInsets.all(20)),
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        color: kPrimaryColor, shape: BoxShape.circle),
+                    child: Icon(Icons.arrow_forward_ios),
                   ),
                 )),
-          )
-        ],
+            Positioned(
+                top: 10,
+                right: 20,
+                child: ElevatedButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, SignUpScreen.routeName),
+                  child: Text(
+                    "Passer",
+                    style: GoogleFonts.poppins(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                  style:
+                      ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
+                )),
+            Obx(
+              () => Positioned(
+                  bottom: 10,
+                  child: AnimatedSmoothIndicator(
+                    activeIndex: obcontroller.currentPage.value,
+                    count: 3,
+                    effect: WormEffect(
+                      activeDotColor: kPrimaryColor,
+                      dotHeight: 5.0,
+                    ),
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }

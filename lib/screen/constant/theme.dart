@@ -1,6 +1,7 @@
 import 'package:event_360/screen/constant/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData theme() {
   return ThemeData(
@@ -50,8 +51,8 @@ AppBarTheme appBarTheme() {
       ),
     ).bodyText2,
     titleTextStyle: TextTheme(
-      headline6: TextStyle(
-        color: Color(0XFF8B8B8B),
+      headline6: GoogleFonts.poppins(
+        color: Colors.black,
         fontSize: 18,
       ),
     ).headline6,

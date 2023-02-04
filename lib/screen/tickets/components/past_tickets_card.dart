@@ -142,8 +142,8 @@ class PastTicketCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(15),
-                        bottomRight: Radius.circular(15),
+                        topRight: Radius.circular(10),
+                        bottomRight: Radius.circular(10),
                       ),
                     ),
                     child: Column(

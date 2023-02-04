@@ -1,7 +1,8 @@
 import 'package:badges/badges.dart';
-import 'package:event_360/screen/feeds/components/body2.dart';
+import 'package:event_360/screen/constant/constants.dart';
+import 'package:event_360/screen/feeds/components/body.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../cart/cart_screen.dart';
 import '../constant/colors.dart';
@@ -21,12 +22,8 @@ class FeedScreen extends StatelessWidget {
           return [
             SliverAppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: kPrimaryColor,
-              title: Text("Tout les évènement",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25)),
+              backgroundColor: kBackgroungColors,
+              title: Text("Tout les évènement", style: headingStyle2),
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),
@@ -41,13 +38,14 @@ class FeedScreen extends StatelessWidget {
                               badgeColor: Colors.white,
                               badgeContent: Text(
                                 "0",
-                                style: TextStyle(color: kPrimaryColor),
+                                style:
+                                    GoogleFonts.poppins(color: kPrimaryColor),
                               ),
                               animationDuration: Duration(milliseconds: 300),
                               child: Icon(
-                                LineAwesomeIcons.bell,
+                                Icons.notifications,
                                 size: 30,
-                                color: Colors.white,
+                                color: Colors.grey,
                               )),
                         ),
                       ),
@@ -64,13 +62,14 @@ class FeedScreen extends StatelessWidget {
                               badgeColor: Colors.white,
                               badgeContent: Text(
                                 "0",
-                                style: TextStyle(color: kPrimaryColor),
+                                style:
+                                    GoogleFonts.poppins(color: kPrimaryColor),
                               ),
                               animationDuration: Duration(milliseconds: 300),
                               child: Icon(
-                                LineAwesomeIcons.shopping_cart,
+                                Icons.shopping_cart,
                                 size: 30,
-                                color: Colors.white,
+                                color: Colors.grey,
                               )),
                         ),
                       ),

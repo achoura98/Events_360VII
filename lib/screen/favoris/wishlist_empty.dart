@@ -9,9 +9,8 @@ class WishlistEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 50),
+    return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
             Padding(
@@ -55,8 +54,6 @@ class WishlistEmpty extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

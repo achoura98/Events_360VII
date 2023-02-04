@@ -1,5 +1,6 @@
 import 'package:badges/badges.dart';
 import 'package:event_360/models/event/data.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/favoris/wishlist_empty.dart';
 import 'package:event_360/screen/favoris/wishlist_cart.dart';
 import 'package:flutter/material.dart';
@@ -21,11 +22,7 @@ class WishlistScreen extends StatelessWidget {
             backgroundColor: kBackgroungColors,
             floating: true,
             snap: true,
-            title: Text("Favoris",
-                style: GoogleFonts.poppins(
-                    color: kPrimaryColor,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25)),
+            title: Text("Favoris", style: headingStyle2),
             actions: [
               Padding(
                 padding: const EdgeInsets.all(10.0),

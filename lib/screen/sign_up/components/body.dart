@@ -25,7 +25,7 @@ class Body extends StatelessWidget {
               ),
               Text(
                 'Créer un Compte',
-                style: headingStyle,
+                style: headingStyle2,
               ),
               Text(
                 "Entrer vos coordonnées ou continuer \navec les médias sociaux",

@@ -1,4 +1,5 @@
 import 'package:event_360/screen/choose_tickets/components/body.dart';
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -23,11 +24,9 @@ class ChooseTicketScreen extends StatelessWidget {
             onPressed: () => Navigator.pop(context),
             icon: Icon(
               LineAwesomeIcons.times,
-              color: kPrimaryColor,
+              color: Colors.black,
             )),
-        title: Text("Details tickets",
-            style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold, color: kPrimaryColor)),
+        title: Text("Details tickets", style: headingStyle2),
       ),
       body: Body(
         event: args.event,
@@ -75,12 +74,12 @@ Widget checkoutSection(BuildContext context) {
         ),
         Text(
           "Total: ",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
         ),
         Text(
           " 10000 Fcfa",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
               color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 20),
         ),
       ],

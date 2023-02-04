@@ -1,3 +1,4 @@
+import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/constant/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,12 +15,10 @@ class ProfilScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kBackgroungColors,
-        centerTitle: true,
         automaticallyImplyLeading: false,
         title: Text(
           "Profil",
-          style: GoogleFonts.poppins(
-              color: kPrimaryColor, fontSize: 25, fontWeight: FontWeight.bold),
+          style: headingStyle2,
         ),
       ),
       body: SingleChildScrollView(
@@ -66,14 +65,14 @@ class ProfilScreen extends StatelessWidget {
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 30),
+                        fontSize: 20),
                   ),
                   Text(
                     "Tiger.wood@icloud.com",
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-                        fontSize: 20),
+                        fontSize: 15),
                   ),
                   SizedBox(height: getProportionateScreenHeight(20)),
                   SizedBox(
@@ -132,6 +131,12 @@ class ProfilScreen extends StatelessWidget {
                     textColor: null,
                   ),
                   Divider(),
+                  ProfilMenuWidget(
+                      title: "Mode sombre",
+                      textColor: kPrimaryColor,
+                      icon: LineAwesomeIcons.moon,
+                      endIcon: false,
+                      onPressed: () {}),
                   ProfilMenuWidget(
                       title: "Déconnexion",
                       textColor: kPrimaryColor,

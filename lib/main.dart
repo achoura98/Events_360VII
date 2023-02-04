@@ -1,6 +1,5 @@
 import 'package:event_360/route.dart';
 import 'package:event_360/screen/splash/splash_screen.dart';
-import 'package:event_360/screen/constant/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +19,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Events 360',
-      theme: theme(),
+      theme: ThemeData(brightness: Brightness.light),
       //home: SplashScreen(),
       initialRoute: SplashScreen.routeName,
       routes: routes,
