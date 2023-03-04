@@ -3,12 +3,12 @@ import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/feeds/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../constant/colors.dart';
+import '../../constant/colors.dart';
 
-class FeedScreen extends StatelessWidget {
-  static String routeName = "/feed";
+class CategoryFeedScreen extends StatelessWidget {
+  static String routeName = "/category_feed";
 
-  const FeedScreen({Key? key}) : super(key: key);
+  const CategoryFeedScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class FeedScreen extends StatelessWidget {
             SliverAppBar(
               automaticallyImplyLeading: false,
               backgroundColor: kBackgroungColors,
-              title: Text("Tout les évènements", style: headingStyle2),
+              title: Text('Par catégorie', style: headingStyle2),
               actions: [
                 Padding(
                   padding: const EdgeInsets.all(10.0),

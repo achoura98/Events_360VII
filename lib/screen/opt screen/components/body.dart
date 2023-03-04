@@ -1,5 +1,6 @@
 import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/constant/size_config.dart';
+import 'package:event_360/screen/constant/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
@@ -21,7 +22,7 @@ class Body extends StatelessWidget {
               SizedBox(height: getProportionateScreenHeight(50)),
               Text("Vérification OTP", style: headingStyle),
               Text(
-                "Consulter votre messagerie pour valider le code",
+                totpverificationtext1,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.poppins(
                     fontWeight: FontWeight.bold, color: kSecondTextColor),
@@ -35,7 +36,7 @@ class Body extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Renvoyer le code",
+                    totpverificationtext2,
                     style: GoogleFonts.poppins(color: kPrimaryColor),
                   ),
                 ),

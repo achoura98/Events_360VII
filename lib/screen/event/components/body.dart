@@ -1,22 +1,29 @@
-import 'package:event_360/models/event/event.dart';
+import 'package:event_360/provider/events.dart';
 import 'package:event_360/screen/choose_tickets/choose_tickets.dart';
 import 'package:event_360/screen/event/components/event_info_widget.dart';
 import 'package:event_360/screen/event/components/other_event_card.dart';
-
-import 'package:event_360/screen/home/components/new_components/custom_like_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import '../../../provider/favs_provider.dart';
 import '../../constant/colors.dart';
-import '../../../models/event/data.dart';
 
 class Body extends StatelessWidget {
-  final EventModel? event;
-  const Body({Key? key, required this.event}) : super(key: key);
+  const Body({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final favosProvider = Provider.of<FavsProvider>(context);
+    final eventData = Provider.of<EventModels>(context);
+    final eventList = eventData.upcomingEvent;
+    final eventId = ModalRoute.of(context)!.settings.arguments as String;
+    final eventAttr = eventData.findById(eventId);
+    print('eventId $eventId');
+
     return Stack(
       children: [
         SingleChildScrollView(
@@ -38,7 +45,7 @@ class Body extends StatelessWidget {
                         bottomLeft: Radius.circular(20),
                         bottomRight: Radius.circular(20)),
                     child: Image.asset(
-                      event!.images,
+                      eventAttr.images,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -59,16 +66,36 @@ class Body extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          CustomLikeButton(),
-                          IconButton(
-                              onPressed: () {
-                                Share.share(
-                                    "https://play.google.com/store/apps/details?id=com.instructivetech.testapp");
+                          InkWell(
+                              splashColor: kPrimaryColor,
+                              onTap: () {
+                                favosProvider.addAndRemoveFromFav(
+                                    eventId,
+                                    eventAttr.title,
+                                    eventAttr.location,
+                                    eventAttr.images,
+                                    eventAttr.day,
+                                    eventAttr.date);
                               },
-                              icon: Icon(
-                                CupertinoIcons.share,
-                                color: Colors.grey,
-                              ))
+                              child: Icon(
+                                favosProvider.getFavsItems.containsKey(eventId)
+                                    ? CupertinoIcons.heart_fill
+                                    : CupertinoIcons.heart_fill,
+                                color: favosProvider.getFavsItems
+                                        .containsKey(eventId)
+                                    ? kPrimaryColor
+                                    : Colors.grey,
+                              )),
+                          IconButton(
+                            onPressed: () {
+                              Share.share(
+                                  "https://play.google.com/store/apps/details?id=com.instructivetech.testapp");
+                            },
+                            icon: Icon(
+                              CupertinoIcons.share,
+                              color: Colors.grey,
+                            ),
+                          )
                         ],
                       )
                     ],
@@ -84,7 +111,7 @@ class Body extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          event!.title,
+                          eventAttr.title,
                           style: GoogleFonts.poppins(
                               fontSize: 20,
                               color: Colors.black,
@@ -99,7 +126,7 @@ class Body extends StatelessWidget {
                           padding:
                               EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                           child: Text(
-                            event!.categoryName,
+                            eventAttr.categoryName,
                             style: GoogleFonts.poppins(
                                 color: kPrimaryColor,
                                 fontWeight: FontWeight.bold),
@@ -112,7 +139,7 @@ class Body extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
-                child: EventInfoWidget(event: event),
+                child: EventInfoWidget(),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
@@ -130,7 +157,7 @@ class Body extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        event!.about,
+                        eventAttr.about,
                         maxLines: 6,
                         overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
@@ -152,11 +179,11 @@ class Body extends StatelessWidget {
                     height: 115,
                     width: 115,
                     child: CircleAvatar(
-                      backgroundImage: AssetImage(event!.autorImage),
+                      backgroundImage: AssetImage(eventAttr.autorImage),
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(event!.auteur,
+                  Text(eventAttr.auteur,
                       style: GoogleFonts.poppins(
                           fontSize: 22,
                           color: kPrimaryColor,
@@ -190,9 +217,10 @@ class Body extends StatelessWidget {
                   child: Row(
                     children: [
                       ...List.generate(
-                          weekEvents.length,
-                          (index) => OtherEventCard(
-                                event: weekEvents[index],
+                          eventList.length,
+                          (index) => ChangeNotifierProvider.value(
+                                value: eventList[index],
+                                child: OtherEventCard(),
                               ))
                     ],
                   ),
@@ -209,19 +237,19 @@ class Body extends StatelessWidget {
           children: [
             BottomAppBar(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () => Navigator.pushNamed(
                         context, ChooseTicketScreen.routeName,
-                        arguments: ChooseTicketsArguments(event: event)),
+                        arguments: eventAttr.id),
                     child: Text("Acheter Ticket",
                         style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20)),
+                            fontSize: 18)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: kPrimaryColor,
                       side: BorderSide.none,

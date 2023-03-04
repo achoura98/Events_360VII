@@ -1,4 +1,6 @@
-class EventModel {
+import 'package:flutter/widgets.dart';
+
+class EventModel with ChangeNotifier {
   final String title,
       duration,
       day,
@@ -11,9 +13,10 @@ class EventModel {
       cost,
       autorImage;
   final int regularPrice;
+  final int quantity = 1;
   final int? premiumPrice;
   final String categoryName;
-  final int id;
+  final String id;
   final bool isFavorite, isPopular;
 
   EventModel({

@@ -1,10 +1,12 @@
+import 'package:event_360/screen/choose_tickets/choose_tickets.dart';
 import 'package:event_360/screen/choose_tickets/components/event_info_widget2.dart';
-import 'package:event_360/screen/choose_tickets/components/paid_buttom_bar.dart';
 import 'package:event_360/screen/constant/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../../../models/event/event.dart';
+import '../../../provider/events.dart';
 import '../../constant/colors.dart';
 import 'dropdown_widget.dart';
 
@@ -22,17 +24,21 @@ class _BodyState extends State<Body> {
 
   int ticketsPrice = 0;
 
-  price(String prix) {
-    ticketCatValue == 'Ticket Bronze'
-        ? prix = numbersTicket + " * " + widget.event!.regularPrice.toString()
-        : prix = numbersTicket + " * " + widget.event!.premiumPrice.toString();
-    return prix;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final eventData = Provider.of<EventModels>(context);
+    final eventId = ModalRoute.of(context)!.settings.arguments as String;
+    final eventAttr = eventData.findById(eventId);
     final seatCategory = ['Ticket Bronze', 'Ticket Gold'];
     final nberTicket = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+
+    price(String prix) {
+      ticketCatValue == 'Ticket Bronze'
+          ? prix = numbersTicket + " * " + eventAttr.regularPrice.toString()
+          : prix = numbersTicket + " * " + eventAttr.premiumPrice.toString();
+      return prix;
+    }
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,7 +51,7 @@ class _BodyState extends State<Body> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(widget.event!.title,
+                    Text(eventAttr.title,
                         style: GoogleFonts.poppins(
                             color: Colors.black,
                             fontWeight: FontWeight.w400,
@@ -58,7 +64,7 @@ class _BodyState extends State<Body> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                       child: Text(
-                        widget.event!.categoryName,
+                        eventAttr.categoryName,
                         style: GoogleFonts.poppins(
                             color: kPrimaryColor, fontWeight: FontWeight.bold),
                       ),
@@ -79,7 +85,7 @@ class _BodyState extends State<Body> {
                             fontSize: 18),
                       ),
                       SizedBox(height: 10),
-                      EventInfoWidget2(event: widget.event),
+                      EventInfoWidget2(),
                       Divider(color: kPrimaryColor, height: 30),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 5),
@@ -246,7 +252,7 @@ class _BodyState extends State<Body> {
               ],
             ),
           ),
-          PaidButtomBar(widget: widget),
+          checkoutSection(context)
         ],
       ),
     );

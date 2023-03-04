@@ -1,16 +1,17 @@
 import 'package:badges/badges.dart';
+import 'package:event_360/models/event/event.dart';
+import 'package:event_360/provider/events.dart';
 import 'package:event_360/screen/constant/constants.dart';
-import 'package:event_360/screen/home/components/new_components/search_field.dart';
+import 'package:event_360/screen/home/components/category_widget.dart';
+import 'package:event_360/screen/home/components/search_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
+import 'package:provider/provider.dart';
 import '../../models/cart/event_card.dart';
 import '../../models/event/data.dart';
-import '../cart/cart_screen.dart';
 import '../constant/colors.dart';
 import '../feeds/feeds.dart';
-import 'components/new_components/event_header.dart';
+import 'components/event_header.dart';
 
 class HomeScreen extends StatefulWidget {
   static String routeName = "/home";
@@ -20,60 +21,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedCategory = 0;
-
-  List<Widget> buildCategoriesWidgets() {
-    List<Widget> categoriesWidgets = [];
-    for (Map category in categories) {
-      categoriesWidgets.add(GestureDetector(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
-            decoration: BoxDecoration(
-                border: _selectedCategory == categories.indexOf(category)
-                    ? Border.all(color: kPrimaryColor, width: 2)
-                    : null,
-                color: _selectedCategory == categories.indexOf(category)
-                    ? kPrimaryColor.withOpacity(0.2)
-                    : Colors.grey.shade200,
-                borderRadius: _selectedCategory == categories.indexOf(category)
-                    ? BorderRadius.circular(10)
-                    : BorderRadius.circular(10)),
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            child: Row(
-              children: [
-                Icon(
-                  category['icon'],
-                  color: _selectedCategory == categories.indexOf(category)
-                      ? kPrimaryColor
-                      : Colors.black,
-                ),
-                SizedBox(width: 10),
-                Text(
-                  category['categoryName'],
-                  style: GoogleFonts.poppins(
-                    color: _selectedCategory == categories.indexOf(category)
-                        ? kPrimaryColor
-                        : Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )
-              ],
-            ),
-          ),
-        ),
-        onTap: (() {
-          setState(() {
-            _selectedCategory = categories.indexOf(category);
-          });
-        }),
-      ));
-    }
-    return categoriesWidgets;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final eventsProvider = Provider.of<EventModels>(context);
+    List<EventModel> weekEventList = eventsProvider.weekEvent;
+    List<EventModel> popularEventList = eventsProvider.popularEvent;
+    List<EventModel> upcomingEventList = eventsProvider.upcomingEvent;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -81,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           floatHeaderSlivers: true,
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
+              //custum app bar
               SliverAppBar(
                 automaticallyImplyLeading: false,
                 backgroundColor: kBackgroungColors,
@@ -112,30 +66,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                 )),
                           ),
                         ),
-                        Center(
-                          child: IconButton(
-                            splashRadius: 20,
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                context,
-                                CartScreen.routeName,
-                              );
-                            },
-                            icon: Badge(
-                                badgeColor: Colors.white,
-                                badgeContent: Text(
-                                  "0",
-                                  style:
-                                      GoogleFonts.poppins(color: kPrimaryColor),
-                                ),
-                                animationDuration: Duration(milliseconds: 300),
-                                child: Icon(
-                                  Icons.shopping_cart,
-                                  size: 30,
-                                  color: Colors.grey,
-                                )),
-                          ),
-                        ),
                       ],
                     ),
                   ),
@@ -150,42 +80,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              LineAwesomeIcons.map_marker,
-                              color: kPrimaryColor,
-                              size: 20,
-                            ),
-                            Text(
-                              "Lomé",
-                              style: GoogleFonts.poppins(
-                                  color: kPrimaryColor,
-                                  fontSize: 18,
-                                  decoration: TextDecoration.underline,
-                                  fontWeight: FontWeight.bold),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
                     SizedBox(height: 10),
+                    // bar de recherche
                     Searchfield(),
                     SizedBox(height: 10),
+                    // menu deroulant horizontale categorie widget
                     Container(
                       height: 50,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: buildCategoriesWidgets(),
-                        ),
-                      ),
+                      child: ListView.builder(
+                          itemCount: categories.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (BuildContext ctx, int index) {
+                            return CatergoryWidget(index: index);
+                          }),
                     ),
                     SizedBox(height: 10),
+                    // menu deroulant des differents evenements...evenement choisi
                     EventHeaderWidget(
                       text: "Choisis pour vous",
                       onPressed: () => Navigator.push(
@@ -194,20 +104,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => FeedScreen())),
                     ),
                     SizedBox(height: 10),
+
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
                           ...List.generate(
-                              weekEvents.length,
-                              (index) => EventCard(
-                                    event: weekEvents[index],
-                                    width: 300,
+                              weekEventList.length,
+                              (index) => ChangeNotifierProvider.value(
+                                    value: weekEventList[index],
+                                    child: EventCard(
+                                      width: 300,
+                                    ),
                                   ))
                         ],
                       ),
                     ),
                     SizedBox(height: 10),
+                    // menu deroulant des differents evenements...evenement populaire
                     EventHeaderWidget(
                       text: "Évènement populaire",
                       onPressed: () => Navigator.push(
@@ -216,20 +130,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (context) => FeedScreen())),
                     ),
                     SizedBox(height: 10),
+
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          ...List.generate(
-                              weekEvents.length,
-                              (index) => EventCard(
-                                    event: popularEvents[index],
-                                    width: 300,
-                                  ))
+                          ...List.generate(popularEventList.length, (index) {
+                            return ChangeNotifierProvider.value(
+                              value: popularEventList[index],
+                              child: EventCard(
+                                width: 300,
+                              ),
+                            );
+                          })
                         ],
                       ),
                     ),
                     SizedBox(height: 10),
+                    // menu deroulant des differents evenements...evenement a venir
                     EventHeaderWidget(
                       text: "Évènement à venir",
                       onPressed: () => Navigator.push(
@@ -243,10 +161,12 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Row(
                         children: [
                           ...List.generate(
-                              weekEvents.length,
-                              (index) => EventCard(
-                                    event: upcomingHomeEvents[index],
-                                    width: 300,
+                              upcomingEventList.length,
+                              (index) => ChangeNotifierProvider.value(
+                                    value: upcomingEventList[index],
+                                    child: EventCard(
+                                      width: 300,
+                                    ),
                                   ))
                         ],
                       ),

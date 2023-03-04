@@ -1,24 +1,27 @@
-//import 'package:event_360/components/add_to_cart.dart';
 import 'package:event_360/models/event/event.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:like_button/like_button.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import '../../components/add_to_cart.dart';
+import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
+import '../../provider/favs_provider.dart';
 import '../../screen/constant/colors.dart';
 import '../../screen/event/event_detail.dart';
-import '../../screen/home/components/new_components/custom_like_icon.dart';
 
 class EventCard extends StatelessWidget {
   const EventCard({
     Key? key,
     required this.width,
-    required this.event,
   }) : super(key: key);
   final double width;
-  final EventModel event;
 
   @override
   Widget build(BuildContext context) {
+    final eventAttribut = Provider.of<EventModel>(context);
+    final favosProvider = Provider.of<FavsProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
@@ -38,7 +41,7 @@ class EventCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: (() => Navigator.pushNamed(context, EventDetail.routeName,
-                  arguments: EventDetailArguments(event: event))),
+                  arguments: eventAttribut.id)),
               child: Stack(
                 children: [
                   Container(
@@ -49,7 +52,7 @@ class EventCard extends StatelessWidget {
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
                       child: Image.asset(
-                        event.images,
+                        eventAttribut.images,
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -76,7 +79,7 @@ class EventCard extends StatelessWidget {
                               color: kPrimaryColor,
                             ),
                             Text(
-                              event.date,
+                              eventAttribut.date,
                               style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
@@ -94,18 +97,15 @@ class EventCard extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        event.title,
-                        style: GoogleFonts.poppins(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                      CustomLikeButton(),
-                    ],
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      eventAttribut.title,
+                      style: GoogleFonts.poppins(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
                   ),
                   SizedBox(height: 3),
                   Row(
@@ -113,7 +113,7 @@ class EventCard extends StatelessWidget {
                     children: [
                       Icon(LineAwesomeIcons.map_marker),
                       Text(
-                        event.location,
+                        eventAttribut.location,
                         style: GoogleFonts.poppins(
                             fontWeight: FontWeight.bold,
                             color: Colors.grey,
@@ -121,8 +121,32 @@ class EventCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(height: 10),
-                  AddToCartButton(event: event)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      LikeButton(
+                        likeBuilder: (isLiked) {
+                          return Icon(
+                            CupertinoIcons.heart_fill,
+                            color: favosProvider.getFavsItems
+                                    .containsKey(eventAttribut.id)
+                                ? kPrimaryColor
+                                : Colors.grey,
+                          );
+                        },
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Share.share(
+                              "https://play.google.com/store/apps/details?id=com.instructivetech.testapp");
+                        },
+                        icon: Icon(
+                          Icons.share,
+                          color: kPrimaryColor,
+                        ),
+                      )
+                    ],
+                  )
                 ],
               ),
             ),

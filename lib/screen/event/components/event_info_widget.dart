@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
-import '../../../models/event/event.dart';
+import 'package:provider/provider.dart';
+import '../../../provider/events.dart';
 import '../../constant/colors.dart';
 
 class EventInfoWidget extends StatelessWidget {
   const EventInfoWidget({
     Key? key,
-    required this.event,
   }) : super(key: key);
-
-  final EventModel? event;
 
   @override
   Widget build(BuildContext context) {
+    final eventData = Provider.of<EventModels>(context);
+    final eventId = ModalRoute.of(context)!.settings.arguments as String;
+    final eventAttr = eventData.findById(eventId);
+
     return Container(
       child: Column(
         children: [
@@ -28,7 +29,7 @@ class EventInfoWidget extends StatelessWidget {
               ),
               SizedBox(width: 15),
               Text(
-                event!.day + ", " + event!.date,
+                eventAttr.day + ", " + eventAttr.date,
                 style: GoogleFonts.poppins(
                     color: kSecondTextColor,
                     fontWeight: FontWeight.bold,
@@ -47,7 +48,7 @@ class EventInfoWidget extends StatelessWidget {
               ),
               SizedBox(width: 15),
               Text(
-                event!.fromTo,
+                eventAttr.fromTo,
                 style: GoogleFonts.poppins(
                     color: kSecondTextColor,
                     fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class EventInfoWidget extends StatelessWidget {
               ),
               SizedBox(width: 15),
               Text(
-                event!.duration + ' Heure',
+                eventAttr.duration + ' Heure',
                 style: GoogleFonts.poppins(
                     color: kSecondTextColor,
                     fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ class EventInfoWidget extends StatelessWidget {
               ),
               SizedBox(width: 15),
               Text(
-                event!.location,
+                eventAttr.location,
                 style: GoogleFonts.poppins(
                     color: kSecondTextColor,
                     fontWeight: FontWeight.bold,

@@ -2,9 +2,7 @@ import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/payment/components/body.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 import '../constant/colors.dart';
-import '../../models/event/event.dart';
 
 class PayementScreen extends StatelessWidget {
   static String routeName = "/payement";
@@ -15,8 +13,6 @@ class PayementScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final PayementArguments args =
-        ModalRoute.of(context)!.settings.arguments as PayementArguments;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -32,15 +28,7 @@ class PayementScreen extends StatelessWidget {
           style: headingStyle2,
         ),
       ),
-      body: Body(
-        event: args.event,
-      ),
+      body: Body(),
     ));
   }
-}
-
-class PayementArguments {
-  final EventModel? event;
-
-  PayementArguments({required this.event});
 }

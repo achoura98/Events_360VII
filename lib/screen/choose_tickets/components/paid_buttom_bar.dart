@@ -25,8 +25,10 @@ class PaidButtomBar extends StatelessWidget {
               child: CustomElevatedButton(
                 text: "Passer à la caisse".toUpperCase(),
                 onClick: () {
-                  Navigator.pushNamed(context, PayementScreen.routeName,
-                      arguments: PayementArguments(event: widget.event));
+                  Navigator.pushNamed(
+                    context,
+                    PayementScreen.routeName,
+                  );
                 },
               ),
             ),

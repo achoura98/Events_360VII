@@ -8,11 +8,9 @@ class PayementModeWidget extends StatelessWidget {
     Key? key,
     required this.image,
     required this.title,
-    required this.onPressed,
   }) : super(key: key);
   final String image;
   final String title;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +23,7 @@ class PayementModeWidget extends StatelessWidget {
             height: 60,
             width: double.infinity,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient:
-                    LinearGradient(colors: [kPrimaryColor, Colors.orange])),
+                borderRadius: BorderRadius.circular(10), color: kPrimaryColor),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -46,15 +42,12 @@ class PayementModeWidget extends StatelessWidget {
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 25),
+                        fontSize: 20),
                   ),
-                  GestureDetector(
-                    onTap: onPressed,
-                    child: Icon(
-                      CupertinoIcons.arrowtriangle_right_fill,
-                      color: Colors.white,
-                      size: 25,
-                    ),
+                  Icon(
+                    CupertinoIcons.arrowtriangle_right_fill,
+                    color: Colors.white,
+                    size: 25,
                   )
                 ],
               ),

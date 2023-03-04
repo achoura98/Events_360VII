@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../../provider/events.dart';
 import '../../constant/colors.dart';
-import '../../../models/event/event.dart';
 
 class PayementHeader extends StatelessWidget {
   const PayementHeader({
     Key? key,
-    required this.event,
   }) : super(key: key);
-  final EventModel? event;
 
   @override
   Widget build(BuildContext context) {
+    final eventData = Provider.of<EventModels>(context);
+    final eventId = ModalRoute.of(context)!.settings.arguments as String;
+    final eventAttr = eventData.findById(eventId);
     return Container(
       width: double.infinity,
       height: 60,
@@ -22,7 +24,7 @@ class PayementHeader extends StatelessWidget {
           )),
       child: Center(
         child: Text(
-          event!.title,
+          eventAttr.title,
           style: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
         ),

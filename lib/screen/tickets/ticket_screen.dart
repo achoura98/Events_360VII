@@ -1,4 +1,3 @@
-import 'package:event_360/models/event/data.dart';
 import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/tickets/components/past_ticket_empty.dart';
 import 'package:event_360/screen/tickets/components/past_tickets_card.dart';
@@ -6,7 +5,10 @@ import 'package:event_360/screen/tickets/components/ticket_empty.dart';
 import 'package:event_360/screen/tickets/components/tickets_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../../models/event/event.dart';
+import '../../provider/events.dart';
 import '../constant/colors.dart';
 
 class TicketScreen extends StatelessWidget {
@@ -14,6 +16,9 @@ class TicketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final eventsProvider = Provider.of<EventModels>(context);
+    List<EventModel> popularEventList = eventsProvider.popularEvent;
+    List<EventModel> upomingEventList = eventsProvider.upcomingEvent;
     List ticket = [];
     return DefaultTabController(
       length: 2,
@@ -45,7 +50,7 @@ class TicketScreen extends StatelessWidget {
                     itemCount: 2,
                     itemBuilder: (BuildContext ctx, int index) {
                       return TicketCard(
-                        event: popularEvents[index],
+                        event: popularEventList[index],
                       );
                     },
                   ),
@@ -55,7 +60,7 @@ class TicketScreen extends StatelessWidget {
                     itemCount: 5,
                     itemBuilder: (BuildContext ctx, int index) {
                       return PastTicketCard(
-                        event: upcomingHomeEvents[index],
+                        event: upomingEventList[index],
                       );
                     },
                   ),

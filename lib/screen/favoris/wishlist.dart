@@ -1,88 +1,35 @@
-import 'package:badges/badges.dart';
-import 'package:event_360/models/event/data.dart';
-import 'package:event_360/screen/constant/constants.dart';
+import 'package:event_360/provider/favs_provider.dart';
 import 'package:event_360/screen/favoris/wishlist_empty.dart';
 import 'package:event_360/screen/favoris/wishlist_cart.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../cart/cart_screen.dart';
-import '../constant/colors.dart';
+import 'package:provider/provider.dart';
+import 'components/custom_app_bar.dart';
+
+//page de favoris
 
 class WishlistScreen extends StatelessWidget {
   static String routeName = "/wishlistScreen";
   @override
   Widget build(BuildContext context) {
-    List wishlist = [];
+    final favsProvider = Provider.of<FavsProvider>(context);
+
     return NestedScrollView(
       floatHeaderSlivers: true,
       headerSliverBuilder: (context, innerBoxIsScrolled) {
         return [
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: kBackgroungColors,
-            floating: true,
-            snap: true,
-            title: Text("Favoris", style: headingStyle2),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Center(
-                      child: IconButton(
-                        onPressed: () {},
-                        splashRadius: 20,
-                        icon: Badge(
-                            badgeColor: Colors.white,
-                            badgeContent: Text(
-                              "0",
-                              style: TextStyle(color: kPrimaryColor),
-                            ),
-                            animationDuration: Duration(milliseconds: 300),
-                            child: Icon(
-                              Icons.notifications,
-                              size: 30,
-                              color: Colors.grey,
-                            )),
-                      ),
-                    ),
-                    Center(
-                      child: IconButton(
-                        splashRadius: 20,
-                        onPressed: () {
-                          Navigator.pushNamed(
-                            context,
-                            CartScreen.routeName,
-                          );
-                        },
-                        icon: Badge(
-                            badgeColor: Colors.white,
-                            badgeContent: Text(
-                              "0",
-                              style: GoogleFonts.poppins(color: kPrimaryColor),
-                            ),
-                            animationDuration: Duration(milliseconds: 300),
-                            child: Icon(
-                              Icons.shopping_cart,
-                              size: 30,
-                              color: Colors.grey,
-                            )),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          CustomAppBar(),
         ];
       },
-      body: wishlist.isNotEmpty
+      body: favsProvider.getFavsItems.isEmpty
           ? WishlistEmpty()
           : ListView.builder(
-              itemCount: 5,
+              itemCount: favsProvider.getFavsItems.length,
               itemBuilder: (BuildContext ctx, int index) {
-                return WishlistCard(event: upcomingHomeEvents[index]);
+                return ChangeNotifierProvider.value(
+                    value: favsProvider.getFavsItems.values.toList()[index],
+                    child: WishlistCard(
+                      eventId: favsProvider.getFavsItems.keys.toList()[index],
+                    ));
               },
             ),
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../models/cart/event_card.dart';
-import '../../../models/event/event.dart';
-import '../../../provider/events.dart';
+import '../../../../models/cart/event_card.dart';
+import '../../../../models/event/event.dart';
+import '../../../../provider/events.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final eventProvider = Provider.of<EventModels>(context);
-    final List<EventModel> allEventList = eventProvider.allEvent;
+    List<EventModel> allEventList = eventProvider.allEvent;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Padding(

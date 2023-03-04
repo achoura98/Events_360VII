@@ -38,14 +38,14 @@ class _BodyState extends State<Body> {
                   children: <Widget>[
                     SizedBox(height: 60.0),
                     Text(
-                      "EVENTS_360",
+                      "BULLETOS",
                       style: GoogleFonts.poppins(
                         fontSize: getProportionateScreenWidth(30),
                         color: kPrimaryColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("Bienvenue sur Events_360, Let's go!"),
+                    Text("Bienvenue sur Bulletos, Let's go!"),
                     SizedBox(
                       height: 60.0,
                     ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../constant/size_config.dart';
+import '../../constant/size_config.dart';
 
 class EventHeaderWidget extends StatelessWidget {
   const EventHeaderWidget({

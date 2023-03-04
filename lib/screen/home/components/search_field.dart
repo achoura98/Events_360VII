@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../constant/colors.dart';
+import '../../constant/colors.dart';
 
 class Searchfield extends StatelessWidget {
   const Searchfield({

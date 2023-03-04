@@ -1,29 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:like_button/like_button.dart';
-
+import 'package:provider/provider.dart';
 import '../../../models/event/event.dart';
 import '../../constant/colors.dart';
-import '../../constant/size_config.dart';
 import '../event_detail.dart';
 
 class OtherEventCard extends StatelessWidget {
   const OtherEventCard({
     Key? key,
     this.width = 230,
-    required this.event,
   }) : super(key: key);
 
-  final EventModel event;
   final double width;
 
   @override
   Widget build(BuildContext context) {
+    final eventAttribute = Provider.of<EventModel>(context);
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: GestureDetector(
         onTap: (() => Navigator.pushNamed(context, EventDetail.routeName,
-            arguments: EventDetailArguments(event: event))),
+            arguments: eventAttribute.id)),
         child: Container(
           width: width,
           //height: getProportionateScreenHeight(285),
@@ -48,7 +45,7 @@ class OtherEventCard extends StatelessWidget {
                       topLeft: Radius.circular(10.0),
                       topRight: Radius.circular(10.0)),
                   child: Image.asset(
-                    event.images,
+                    eventAttribute.images,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -58,18 +55,18 @@ class OtherEventCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(event.date,
+                    Text(eventAttribute.date,
                         style: GoogleFonts.poppins(
                             color: kPrimaryColor, fontWeight: FontWeight.w600)),
                     Text(
-                      event.title,
+                      eventAttribute.title,
                       style: GoogleFonts.poppins(
                           color: Colors.black87,
                           fontWeight: FontWeight.w600,
                           fontSize: 18),
                     ),
                     Text(
-                      event.location,
+                      eventAttribute.location,
                       style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
                     ),
                     Row(
@@ -79,11 +76,6 @@ class OtherEventCard extends StatelessWidget {
                           Icons.share,
                           color: kPrimaryColor,
                         ),
-                        SizedBox(width: getProportionateScreenWidth(3)),
-                        LikeButton(
-                          isLiked: false,
-                          key: GlobalKey<LikeButtonState>(),
-                        )
                       ],
                     )
                   ],

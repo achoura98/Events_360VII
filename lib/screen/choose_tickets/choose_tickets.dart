@@ -1,10 +1,11 @@
 import 'package:event_360/screen/choose_tickets/components/body.dart';
 import 'package:event_360/screen/constant/constants.dart';
+import 'package:event_360/screen/payment/payement.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
-import '../../models/event/event.dart';
+import 'package:provider/provider.dart';
+import '../../provider/events.dart';
 import '../constant/colors.dart';
 
 class ChooseTicketScreen extends StatelessWidget {
@@ -14,8 +15,6 @@ class ChooseTicketScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ChooseTicketsArguments args =
-        ModalRoute.of(context)!.settings.arguments as ChooseTicketsArguments;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -28,20 +27,18 @@ class ChooseTicketScreen extends StatelessWidget {
             )),
         title: Text("Details tickets", style: headingStyle2),
       ),
-      body: Body(
-        event: args.event,
-      ),
+      body: Body(),
     ));
   }
 }
 
-class ChooseTicketsArguments {
-  final EventModel? event;
+Widget checkoutSection(
+  BuildContext context,
+) {
+  final eventData = Provider.of<EventModels>(context);
+  final eventId = ModalRoute.of(context)!.settings.arguments as String;
+  final eventAttr = eventData.findById(eventId);
 
-  ChooseTicketsArguments({required this.event});
-}
-
-Widget checkoutSection(BuildContext context) {
   return Container(
     margin: EdgeInsets.all(10),
     width: double.infinity,
@@ -56,7 +53,10 @@ Widget checkoutSection(BuildContext context) {
               backgroundColor: kPrimaryColor,
               side: BorderSide.none,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, PayementScreen.routeName,
+                  arguments: eventAttr.id);
+            },
             child: Padding(
               padding: EdgeInsets.all(8.0),
               child: Text(

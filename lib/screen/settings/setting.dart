@@ -1,5 +1,6 @@
 import 'package:event_360/screen/constant/constants.dart';
 import 'package:event_360/screen/constant/size_config.dart';
+import 'package:event_360/screen/constant/text_string.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -8,6 +9,7 @@ import '../constant/colors.dart';
 import 'components/profil_menu.dart';
 import 'components/update_profil.dart';
 
+// setting screen
 class ProfilScreen extends StatelessWidget {
   static String routeName = "/profil";
   @override
@@ -97,48 +99,48 @@ class ProfilScreen extends StatelessWidget {
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.bell,
                     onPressed: () {},
-                    title: 'Centre de notification',
+                    title: tprofiltitle1,
                     textColor: null,
                   ),
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.google_logo,
                     onPressed: () {},
-                    title: 'Compte liés',
+                    title: tprofiltitle2,
                     textColor: null,
                   ),
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.user,
                     onPressed: () {},
-                    title: 'Personne qui suivent',
+                    title: tprofiltitle3,
                     textColor: null,
                   ),
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.exclamation_circle,
                     onPressed: () {},
-                    title: 'Problèmes de billets',
+                    title: tprofiltitle4,
                     textColor: null,
                   ),
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.calendar,
                     onPressed: () {},
-                    title: 'Gérer les évènements',
+                    title: tprofiltitle5,
                     textColor: null,
                   ),
                   ProfilMenuWidget(
                     icon: LineAwesomeIcons.cog,
                     onPressed: () {},
-                    title: 'Paramètres',
+                    title: tprofiltitle6,
                     textColor: null,
                   ),
                   Divider(),
                   ProfilMenuWidget(
-                      title: "Mode sombre",
+                      title: tprofiltitle7,
                       textColor: kPrimaryColor,
                       icon: LineAwesomeIcons.moon,
                       endIcon: false,
                       onPressed: () {}),
                   ProfilMenuWidget(
-                      title: "Déconnexion",
+                      title: tprofiltitle8,
                       textColor: kPrimaryColor,
                       icon: LineAwesomeIcons.alternate_sign_out,
                       endIcon: false,
